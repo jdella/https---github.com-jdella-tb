@@ -20,13 +20,13 @@ namespace TaskBuddi.BL
 
 		public string Notes { get; set; }
 
+		public bool Done { get; set; }
+
 		//TODO categories
 
 		[Indexed]
 		public int GroupId { get; set; }
 
-		// new property
-		public bool Done { get; set; }
 	}
 }
 

@@ -266,7 +266,7 @@ containing a value of this type.
     public static final class string {
         public static final int ApplicationName=0x7f05001c;
         public static final int Hello=0x7f05001b;
-        public static final int app_name=0x7f05001e;
+        public static final int app_name=0x7f05001d;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -361,7 +361,6 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f050013;
-        public static final int hello=0x7f05001d;
         /**  Location client code resources (prefix with location_client) 
          */
         public static final int location_client_powered_by_google=0x7f05001a;

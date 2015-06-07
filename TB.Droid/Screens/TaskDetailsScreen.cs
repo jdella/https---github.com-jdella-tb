@@ -25,56 +25,18 @@ using Java.Lang;
 
 namespace TaskBuddi.Droid.Screens
 {
-	//TODO: implement proper lifecycle methods?
 	[Activity(Label = "Task Details")]			
 	public class TaskDetailsScreen : Activity
 	{
 		protected Task task = new Task();
 		//Controls
-		//protected EditText groupIdInput;
 		protected EditText vName;
 		protected EditText vNotes;
 		protected CheckBox vDone;
 		protected Spinner tdAssignedTo;
-		//private bool isExiting = false;
-
-		#region Override methods for activity
-
-		//TODO - REMOVE
-		//		protected override void OnStart()
-		//		{
-		//			base.OnStart();
-		//			if (isExiting)
-		//				Finish();
-		//
-		//		}
-		//
-		//		protected override void OnResume()
-		//		{
-		//			base.OnResume();
-		//			if (isExiting)
-		//				Finish();
-		//		}
-		//
-		//		protected override void OnPause()
-		//		{
-		//			base.OnPause();
-		//			if (isExiting)
-		//				Finish();
-		//		}
-		//
-		//		protected override void OnStop()
-		//		{
-		//			base.OnStop();
-		//			if (isExiting)
-		//				Finish();
-		//		}
-
-		#endregion
 
 		protected override void OnCreate(Bundle bundle)
 		{
-//			if (!isExiting) {
 			// Init Screen
 			base.OnCreate(bundle);
 			// action bar
@@ -87,11 +49,6 @@ namespace TaskBuddi.Droid.Screens
 			vNotes = FindViewById<EditText>(Resource.Id.tdNotes);
 			vDone = FindViewById<CheckBox>(Resource.Id.vDone);
 
-//            var cursor = from g in TaskGroupManager.GetTaskGroups()
-//                                  let _id = g.ID
-//                                  orderby g.Name
-//                                  select new { _id, g.Name };
-
 			// Init TaskGroups spinner 
 			var groupList = TaskGroupManager
                 .GetTaskGroups()
@@ -99,9 +56,6 @@ namespace TaskBuddi.Droid.Screens
                 .ToList(); 
 			tdAssignedTo = FindViewById<Spinner>(Resource.Id.tdAssignedTo);
 			tdAssignedTo.Adapter = new GroupSpinnerAdapter(this, groupList);			
-			//TODO set default option??
-			//var ids = groupList.Select(g => g.ID).ToArray();
-			//tdAssignedTo.SetSelection(Array.IndexOf(groupList, DEFAULT_ID));
 
 			//Load TaskGroup Details, if any
 			var taskId = Intent.GetIntExtra("id", 0); //default
@@ -117,9 +71,7 @@ namespace TaskBuddi.Droid.Screens
 				// set spinner to current group
 				var idArray = groupList.Select(g => g.ID).ToArray();
 				tdAssignedTo.SetSelection(Array.IndexOf(idArray, task.GroupId));
-
 			}
-			//}
 		}
 
 		protected void Save()

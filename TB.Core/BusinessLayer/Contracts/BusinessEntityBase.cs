@@ -1,20 +1,19 @@
 using System;
 using TaskBuddi.DL.SQLite;
 
-namespace TaskBuddi.BL.Contracts {
+namespace TaskBuddi.BL.Contracts
+{
 	/// <summary>
 	/// Business entity base class. Provides the ID property.
 	/// </summary>
-	public abstract class BusinessEntityBase : IBusinessEntity {
-		public BusinessEntityBase ()
+	public abstract class BusinessEntityBase : IBusinessEntity
+	{
+		public BusinessEntityBase()
 		{
 		}
-		
-		/// <summary>
-		/// Gets or sets the Database ID.
-		/// </summary>
+
 		[PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+		public int ID { get; set; }
 	}
 }
 

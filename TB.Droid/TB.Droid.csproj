@@ -104,7 +104,6 @@
     <Compile Include="Screens\MapScreen.cs" />
     <Compile Include="Screens\TaskGroupDetailsScreen.cs" />
     <Compile Include="Adapters\TaskGroupListAdapter.cs" />
-    <Compile Include="Adapters\TaskListAdapter.cs" />
     <Compile Include="Adapters\GroupSpinnerAdapter.cs" />
     <Compile Include="Screens\AutoGrid.cs" />
     <Compile Include="Services\LocationService.cs" />
@@ -150,7 +149,7 @@
     <AndroidResource Include="Resources\Drawable\icon.png" />
     <AndroidResource Include="Resources\Drawable\icAddTask.png" />
     <AndroidResource Include="Resources\Layout\HomeScreen.axml" />
-    <None Include="Screens\HomeScreen.bkp" />
+    <None Include="Adapters\TaskListAdapter.OLD" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />

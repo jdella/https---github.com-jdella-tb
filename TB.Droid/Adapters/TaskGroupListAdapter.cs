@@ -11,6 +11,7 @@ using TaskBuddi.Droid.Screens;
 
 namespace TaskBuddi.Droid.Adapters
 {
+	//Adapter to populate Group GridView on Home Screen
 	public class TaskGroupListAdapter : BaseAdapter<TaskGroup>
 	{
 		protected Activity context = null;
@@ -61,12 +62,8 @@ namespace TaskBuddi.Droid.Adapters
 					showDetails.PutExtra("id", task.ID);
 					context.StartActivity(showDetails);
 				};
-				//add to view (TODO REMOVE LISTVIEW FROM XML - DELETE TASKLISTITEM?)
 				vLayout.AddView(taskItem);
 			}
-//			var space = new TextView(context);
-//			space.Text = "SPACE";
-//			vLayout.AddView(space);
 			return view;
 		}
 

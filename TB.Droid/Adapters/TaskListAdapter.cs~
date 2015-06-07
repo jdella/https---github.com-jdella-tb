@@ -12,8 +12,7 @@ using TaskBuddi.BL.Managers;
 namespace TaskBuddi.Droid.Adapters
 {
     /// <summary>
-    /// Task list adapter.
-    /// Generates a list of Tasks.
+    /// Task list adapter. Generates a list of Tasks to populate Group Grid on Home Screen
     /// </summary>
     public class TaskListAdapter : BaseAdapter<Task>
     {
@@ -26,7 +25,6 @@ namespace TaskBuddi.Droid.Adapters
             : base()
         {
             this.context = context;
-            //this.tasks = TaskManager.GetTasks();
             this.tasks = TaskManager.GetTasksByGroup(groupId);
         }
 
@@ -47,26 +45,13 @@ namespace TaskBuddi.Droid.Adapters
             view.FindViewById<ImageView>(Resource.Id.vCheck).Visibility = task.Done ? 
                 ViewStates.Visible : ViewStates.Gone;
 
-            //#Click Task item -> Task Details
-            //TODO - HACK - Multiple click events..
+            //#Click Task item -> Task Details Screen
             view.Click += (sender, e) =>
             {
                 var showDetails = new Intent(context, typeof(TaskDetailsScreen));
                 showDetails.PutExtra("id", task.ID);
                 context.StartActivity(showDetails);
-            };
-
-            var tv = new TextView(context);
-            tv.Text = "TA-DA!!";
-            var layout = view.FindViewById<LinearLayout>(Resource.Id.tdLayout);
-            layout.AddView(tv);
-
-            //context.FindViewById<ResizingGridView>(Resource.Id.vGroups).AddView(tv);
-            //view.FindViewById<ResizingGridView>(Resource.Id.vGroups).AddView(view);
-
-            //context.FindViewById<LinearLayout>(Resource.Id.vLayout).AddView(tv);
-            //parent.FindViewById<LinearLayout>(Resource.Id.vLayout).AddView(view);
-                    
+            };                                        
             return view;
         }
         //        protected void View

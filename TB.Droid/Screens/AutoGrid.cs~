@@ -62,9 +62,7 @@ namespace TaskBuddi.Droid
                     }
                 }
             }
-            //Log.d(TAG, "numColumns set to: " + numColumns);
         }
-
 
         /**
      * Reads the amount of columns from the resource file and
@@ -73,7 +71,6 @@ namespace TaskBuddi.Droid
         private void UpdateColumns()
         {
             this.numColumns = Context.Resources.GetInteger(numColumnsID);
-            //getContext().getResources().getInteger(numColumnsID);
         }
 
         // @Override
@@ -82,8 +79,6 @@ namespace TaskBuddi.Droid
             this.numColumns = numColumns;
             base.SetNumColumns(numColumns);
             SetSelection(previousFirstVisible);
-            //Log.d(TAG, "setSelection --> " + previousFirstVisible);
-            //setSelection(previousFirstVisible);
         }
 
         //@Override
@@ -122,7 +117,6 @@ namespace TaskBuddi.Droid
         private void SetHeights()
         {
             IAdapter adapter = this.Adapter;
-            //getAdapter();
 
             if (adapter != null)
             {
@@ -138,8 +132,6 @@ namespace TaskBuddi.Droid
                             maxHeight = view.Height;
                         }
                     }
-                    //Log.d(TAG, "Max height for row #" + i/numColumns + ": " + maxHeight);
-
                     // Set max height for each element in this row
                     if (maxHeight > 0)
                     {
@@ -149,7 +141,6 @@ namespace TaskBuddi.Droid
                             if (view != null && view.Height != maxHeight)
                             {
                                 view.SetMinimumHeight(maxHeight);
-                                //setMinimumHeight(maxHeight);
                             }
                         }
                     }

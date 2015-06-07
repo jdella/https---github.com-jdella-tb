@@ -439,8 +439,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f05001b
 			public const int Hello = 2131034139;
 			
-			// aapt resource value: 0x7f05001e
-			public const int app_name = 2131034142;
+			// aapt resource value: 0x7f05001d
+			public const int app_name = 2131034141;
 			
 			// aapt resource value: 0x7f050015
 			public const int auth_client_needs_enabling_title = 2131034133;
@@ -519,9 +519,6 @@ namespace TaskBuddi.Droid
 			
 			// aapt resource value: 0x7f050013
 			public const int common_signin_button_text_long = 2131034131;
-			
-			// aapt resource value: 0x7f05001d
-			public const int hello = 2131034141;
 			
 			// aapt resource value: 0x7f05001a
 			public const int location_client_powered_by_google = 2131034138;

@@ -4,21 +4,6 @@
     xmlns:Class="TaskBuddi.Droid.Screens.HomeScreen"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-<!--    <TextView
-        android:id="@+id/lblGroupId"
-        android:text="Group ID:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:id="@+id/vGroupId"
-        android:inputType="number"
-        android:layout_width="81.8dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblGroupId" />
-
-
-        -->
     <TextView
         android:id="@+id/lblName"
         android:text="Name:"
@@ -27,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_below="@+id/vGroupId" />
-<!--        -->
     <EditText
         android:id="@+id/vName"
         android:layout_width="fill_parent"

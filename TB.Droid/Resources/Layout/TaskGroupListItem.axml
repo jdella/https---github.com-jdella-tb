@@ -33,29 +33,5 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="2dp" />
-    <!--        <ListView
-            android:id="@+id/vTasks"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />-->
-    <!--        <TextView
-            android:text="Description"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lblDescription"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="5dp" />-->
-    <!--        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="40.6dp"
-            android:id="@+id/linearLayout2">
-            <GridLayout
-                android:minWidth="25px"
-                android:minHeight="25px"
-                android:layout_width="174.4dp"
-                android:layout_height="match_parent"
-                android:id="@+id/gridLayout1" />
-        </LinearLayout>-->
     </LinearLayout>
 </LinearLayout>

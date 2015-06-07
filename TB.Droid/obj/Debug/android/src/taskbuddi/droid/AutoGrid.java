@@ -14,7 +14,7 @@ public class AutoGrid
 			"n_onConfigurationChanged:(Landroid/content/res/Configuration;)V:GetOnConfigurationChanged_Landroid_content_res_Configuration_Handler\n" +
 			"n_onScrollChanged:(IIII)V:GetOnScrollChanged_IIIIHandler\n" +
 			"";
-		mono.android.Runtime.register ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5635.28033, Culture=neutral, PublicKeyToken=null", AutoGrid.class, __md_methods);
+		mono.android.Runtime.register ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5636.30403, Culture=neutral, PublicKeyToken=null", AutoGrid.class, __md_methods);
 	}
 
 
@@ -22,7 +22,7 @@ public class AutoGrid
 	{
 		super (p0);
 		if (getClass () == AutoGrid.class)
-			mono.android.TypeManager.Activate ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5635.28033, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
+			mono.android.TypeManager.Activate ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5636.30403, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
 	}
 
 
@@ -30,7 +30,7 @@ public class AutoGrid
 	{
 		super (p0, p1);
 		if (getClass () == AutoGrid.class)
-			mono.android.TypeManager.Activate ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5635.28033, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0, p1 });
+			mono.android.TypeManager.Activate ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5636.30403, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0, p1 });
 	}
 
 
@@ -38,7 +38,7 @@ public class AutoGrid
 	{
 		super (p0, p1, p2);
 		if (getClass () == AutoGrid.class)
-			mono.android.TypeManager.Activate ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5635.28033, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2 });
+			mono.android.TypeManager.Activate ("TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5636.30403, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2 });
 	}
 
 

@@ -9,9 +9,10 @@ using Android.Views;
 using Android.Content;
 using TaskBuddi.Droid.Screens;
 
-//TODO refactor two group adapters?
+
 namespace TaskBuddi.Droid.Adapters
 {
+	//Adapter to populate spinner in Task Details screen
 	public class GroupSpinnerAdapter : BaseAdapter<TaskGroup>
 	{
 		protected Activity context = null;
@@ -21,7 +22,6 @@ namespace TaskBuddi.Droid.Adapters
 			: base()
 		{
 			this.context = context;
-			//this.taskGroups = TaskGroupManager.GetTaskGroups();
 			this.taskGroups = groups;
 		}
 
@@ -40,9 +40,6 @@ namespace TaskBuddi.Droid.Adapters
 			//#Set view model
 			var vGroupName = view.FindViewById<TextView>(Resource.Id.vGroupName);
 			vGroupName.Text = group.Name;
-
-			//TODO move to xml?
-			//view.FindViewById<RelativeLayout>(Resource.Id.vMain).SetPadding(20, 20, 20, 20);
 
 			return view;
 		}

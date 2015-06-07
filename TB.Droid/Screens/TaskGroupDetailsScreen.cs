@@ -13,8 +13,7 @@ using Android.Test.Suitebuilder;
 namespace TaskBuddi.Droid.Screens
 {
 	/// <summary>
-	/// Task group details screen.
-	/// Form to edit/delete Task.
+	/// Task group details screen. Form to edit/delete Task.
 	/// </summary>
 	[Activity(Label = "Task Group Details")]			
 	public class TaskGroupDetailsScreen : Activity

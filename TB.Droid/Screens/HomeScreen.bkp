@@ -1,0 +1,69 @@
+using System.Collections.Generic;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using TaskBuddi.BL;
+using Android.Views;
+using Android.Widget;
+using TaskBuddi.Droid.Screens;
+using TaskBuddi.Droid.Adapters;
+
+namespace TaskBuddi.Droid.Screens
+{
+	[Activity(Label = "TaskBuddi", MainLauncher = true)]			
+	public class HomeScreen : Activity
+	{
+		// Groups
+		protected GridView vGroupGrid;
+
+		protected override void OnCreate(Bundle bundle)
+		{       
+			// init view
+			base.OnCreate(bundle);
+			RequestWindowFeature(WindowFeatures.ActionBar);
+			SetContentView(Resource.Layout.HomeScreen);
+
+			//Create custom GridView (fixes sizing/spacing issues)
+			vGroupGrid = new AutoGrid(this);
+			vGroupGrid.SetNumColumns(2);
+			FindViewById<FrameLayout>(Resource.Id.vFrame).AddView(vGroupGrid);           
+		}
+
+		protected override void OnResume()
+		{
+			//populate/refresh grid
+			vGroupGrid.Adapter = new TaskGroupListAdapter(this);
+			base.OnResume();    
+			
+		}
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.menu_homescreen, menu);
+			return true;
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+			// add task
+				case Resource.Id.menu_add_task:
+					StartActivity(typeof(TaskDetailsScreen));
+					return true;
+			// add group
+				case Resource.Id.menu_add_taskGroup:
+					StartActivity(typeof(TaskGroupDetailsScreen));
+					return true;
+			// show map
+				case Resource.Id.menu_show_map:
+					StartActivity(typeof(MapScreen));
+					return true;
+
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
+
+		}
+	}
+}

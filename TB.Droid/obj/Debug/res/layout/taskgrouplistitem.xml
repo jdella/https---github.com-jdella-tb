@@ -1,0 +1,30 @@
+<LinearLayout android:orientation="vertical" android:id="@+id/vMain" android:layout_width="fill_parent" android:layout_height="wrap_content" android:padding="2dp" xmlns:android="http://schemas.android.com/apk/res/android"><!--    <ImageView
+        android:id="@+id/vCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_checkmark"
+        android:layout_gravity="center_vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true" />--><LinearLayout android:id="@+id/vLayout" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentLeft="true" android:layout_toLeftOf="@+id/checkmark" android:background="@android:color/holo_blue_dark" android:padding="2dp" android:paddingBottom="15dp"><TextView android:id="@+id/vGroupName" android:text="Group Name" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_marginTop="2dp" /><!--        <ListView
+            android:id="@+id/vTasks"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />--><!--        <TextView
+            android:text="Description"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblDescription"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp" />--><!--        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40.6dp"
+            android:id="@+id/linearLayout2">
+            <GridLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="174.4dp"
+                android:layout_height="match_parent"
+                android:id="@+id/gridLayout1" />
+        </LinearLayout>--></LinearLayout></LinearLayout>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.3" package="com.dellapz.taskbuddi" android:versionCode="4">
+  <application android:label="TaskBuddi" android:debuggable="true" android:icon="@drawable/ic_launcher" android:theme="@style/Theme.TaskBuddi" android:name="mono.android.app.Application">
+    <!-- Put your Google Maps V2 API Key here. This key will not work for you.-->
+    <!-- See https://developers.google.com/maps/documentation/android/start#obtaining_an_api_key -->
+    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC4j_tC-GB4nbBi66JdpqXkBHfqYieqsjM" />
+    <meta-data android:name="com.google.android.gms.version" android:value="google_play_services_version" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <activity android:label="TaskBuddi" android:name="md55c17d5bbfbbb98a4b2809b53f99f4ae5.HomeScreen">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <activity android:label="Task Details" android:name="md55c17d5bbfbbb98a4b2809b53f99f4ae5.TaskDetailsScreen" />
+    <activity android:label="Task Map" android:name="md59056a49c3773a240d3d05392b68119fd.MapScreen" />
+    <activity android:label="Task Group Details" android:name="md55c17d5bbfbbb98a4b2809b53f99f4ae5.TaskGroupDetailsScreen" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.dellapz.taskbuddi.mono.MonoRuntimeProvider.__mono_init__" />
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.com.dellapz.taskbuddi" />
+      </intent-filter>
+    </receiver>
+  </application>
+  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+</manifest>

@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using Android.Widget;
+using TaskBuddi.BL;
+using Android.App;
+using Android;
+using Android.Views;
+using Android.Content;
+using TaskBuddi.Droid.Screens;
+using TaskBuddi.BL.Managers;
+
+namespace TaskBuddi.Droid.Adapters
+{
+    /// <summary>
+    /// Task list adapter.
+    /// Generates a list of Tasks.
+    /// </summary>
+    public class TaskListAdapter : BaseAdapter<Task>
+    {
+        protected Activity context = null;
+        protected IList<Task> tasks = new List<Task>();
+        protected Task task = new Task();
+        protected bool clicked = false;
+
+        public TaskListAdapter(Activity context, int groupId)
+            : base()
+        {
+            this.context = context;
+            //this.tasks = TaskManager.GetTasks();
+            this.tasks = TaskManager.GetTasksByGroup(groupId);
+        }
+
+        // SET THE VIEWS
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            View view;
+            task = tasks[position];
+
+            //Try to reuse convertView if it's not  null, otherwise inflate it from our item layout
+            if (convertView == null)
+                view = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
+            else
+                view = convertView;
+			
+            // Set View Model
+            view.FindViewById<TextView>(Resource.Id.vName).Text = task.Name;
+            view.FindViewById<ImageView>(Resource.Id.vCheck).Visibility = task.Done ? 
+                ViewStates.Visible : ViewStates.Gone;
+
+            //#Click Task item -> Task Details
+            //TODO - HACK - Multiple click events..
+            view.Click += (sender, e) =>
+            {
+                var showDetails = new Intent(context, typeof(TaskDetailsScreen));
+                showDetails.PutExtra("id", task.ID);
+                context.StartActivity(showDetails);
+            };
+
+            var tv = new TextView(context);
+            tv.Text = "TA-DA!!";
+            var layout = view.FindViewById<LinearLayout>(Resource.Id.tdLayout);
+            layout.AddView(tv);
+
+            //context.FindViewById<ResizingGridView>(Resource.Id.vGroups).AddView(tv);
+            //view.FindViewById<ResizingGridView>(Resource.Id.vGroups).AddView(view);
+
+            //context.FindViewById<LinearLayout>(Resource.Id.vLayout).AddView(tv);
+            //parent.FindViewById<LinearLayout>(Resource.Id.vLayout).AddView(view);
+                    
+            return view;
+        }
+        //        protected void View
+
+        /* COMMON METHODS */
+        //#get Task
+        public override Task this [int position]
+        {
+            get { return tasks[position]; }
+        }
+        //#get ID
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+        //#get Count
+        public override int Count
+        {
+            get { return tasks.Count; }
+        }
+    }
+}

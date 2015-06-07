@@ -1,0 +1,178 @@
+using System.Collections.Generic;
+using Android.App;
+using Android.Content;
+using Android.OS;
+using TaskBuddi.BL;
+using Android.Views;
+using Android.Widget;
+using TaskBuddi.Droid.Screens;
+using TaskBuddi.Droid.Adapters;
+using Android.Locations;
+using System.Linq;
+using System.Text;
+using System;
+
+namespace TaskBuddi.Droid.Screens
+{
+	[Activity(Label = "TaskBuddi", MainLauncher = true)]			
+	public class HomeScreen : Activity, ILocationListener
+	{
+		// Groups
+		protected GridView vGroupGrid;
+		protected TextView vDebug;
+
+		protected Location _currentLocation;
+		protected LocationManager _locationManager;
+		protected string _locationProvider;
+
+		protected override void OnCreate(Bundle bundle)
+		{       
+			// init view
+			base.OnCreate(bundle);
+			RequestWindowFeature(WindowFeatures.ActionBar);
+			SetContentView(Resource.Layout.HomeScreen);
+
+			//get debug field
+			vDebug = FindViewById<TextView>(Resource.Id.vDebug);
+
+			//Create custom GridView (fixes sizing/spacing issues)
+			vGroupGrid = new AutoGrid(this);
+			vGroupGrid.SetNumColumns(2);
+			FindViewById<FrameLayout>(Resource.Id.vFrame).AddView(vGroupGrid);  
+
+			InitLocationManager();
+		}
+
+		protected void InitLocationManager()
+		{
+			_locationManager = (LocationManager)GetSystemService(LocationService);
+			
+			// set accuracy for location requests
+			Criteria criteria = new Criteria();
+			criteria.Accuracy = Accuracy.Fine;
+
+			// Get suitable provider from OS
+			IList<string> acceptableLocationProviders = _locationManager
+                .GetProviders(criteria, true);
+			if (acceptableLocationProviders.Any())
+				_locationProvider = acceptableLocationProviders.First();
+			else
+				_locationProvider = string.Empty; //none found
+		}
+
+		//Activity Life Cycle Transition Methods
+		protected override void OnResume()
+		{
+			base.OnResume();  
+			
+			//populate/refresh grid
+			vGroupGrid.Adapter = new TaskGroupListAdapter(this);
+			
+			//start location listeners
+			_locationManager.RequestLocationUpdates(_locationProvider, 10000, 0, this);	
+
+			// get address
+			GetDeviceLocation();
+		}
+            
+		//LOCATION METHODS
+		async void GetDeviceLocation()
+		{
+			// debug result string
+			var log = "No location";
+			if (_currentLocation != null)
+			{
+				// Google returns a list of addresses
+				Geocoder geocoder = new Geocoder(this);
+				IList<Address> addressList = await geocoder
+                    .GetFromLocationAsync(_currentLocation.Latitude, _currentLocation.Longitude, 10); //max results
+				// Get first
+				Address address = addressList.FirstOrDefault();
+				if (address != null)
+				{
+					//build address string
+					StringBuilder deviceAddress = new StringBuilder();
+					for (int i = 0; i < address.MaxAddressLineIndex; i++)
+					{
+						deviceAddress.Append(address.GetAddressLine(i))
+                            .AppendLine(",");
+					}
+					log = deviceAddress.ToString();
+				}
+				else
+					log = "Unable to determine the address.";
+			}
+			// log result to screen
+			vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log;
+		}
+		// Location Listener Events
+		public void OnLocationChanged(Location location)
+		{
+			var log = "Unable to determine your location.";
+			_currentLocation = location;
+			if (_currentLocation != null)
+			{
+				log = String.Format("{0},{1}", _currentLocation.Latitude, _currentLocation.Longitude);
+				GetDeviceLocation();
+			}
+			// log result
+			vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log; 
+		}
+		//debug output for location
+		protected void LogLocationToScreen(Location location)
+		{
+            
+		}
+
+		public void OnProviderDisabled(string provider)
+		{
+			// eg GPS turned off..
+		}
+
+		public void OnProviderEnabled(string provider)
+		{
+			// turned backed on...
+		}
+
+		public void OnStatusChanged(string provider, Availability status, Bundle extras)
+		{
+			// on provided status change eg "out of service"
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+			//release listeners
+			_locationManager.RemoveUpdates(this);
+		}
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.menu_homescreen, menu);
+			return true;
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			switch (item.ItemId)
+			{
+			// add task
+				case Resource.Id.menu_add_task:
+					StartActivity(typeof(TaskDetailsScreen));
+					return true;
+			// add group
+				case Resource.Id.menu_add_taskGroup:
+					StartActivity(typeof(TaskGroupDetailsScreen));
+					return true;
+			// show map
+				case Resource.Id.menu_show_map:
+					StartActivity(typeof(MapScreen));
+					return true;
+
+				default:
+					return base.OnOptionsItemSelected(item);
+			}
+
+		}
+	}
+}

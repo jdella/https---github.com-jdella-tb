@@ -1,0 +1,18 @@
+﻿<Properties StartupItem="TB.Droid\TB.Droid.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TB.Droid\Resources\Layout\TaskBuddiHome.xaml.cs">
+    <Files>
+      <File FileName="TB.Droid\MainActivity.cs" Line="16" Column="26" />
+      <File FileName="TB.Droid\App.cs" Line="1" Column="1" />
+      <File FileName="TB.Droid\Resources\Layout\TaskBuddiHome.xaml.cs" Line="1" Column="1" />
+      <File FileName="TB.Droid\Resources\Layout\TaskBuddiHome.xaml" Line="1" Column="1" />
+      <File FileName="TB.Droid\Resources\Layout\TaskDetailsPage.xaml.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="TB.Droid\Resources\Layout\TaskDetailsPage.xaml" Line="1" Column="1" NotebookId="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TB.Droid AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>

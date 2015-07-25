@@ -18,11 +18,11 @@ namespace TaskBuddi.BL
 
         public string Name { get; set; }
 
+        public string Category { get; set; }
+
         public string Notes { get; set; }
 
         public bool Done { get; set; }
-
-        //TODO categories
 
         [Indexed]
         public int GroupId { get; set; }

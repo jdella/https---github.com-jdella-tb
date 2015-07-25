@@ -37,7 +37,22 @@
         android:hint="Name"
         android:id="@+id/vName" />
     <TextView
-        android:layout_below="@+id/vName"
+        android:text="Task Category:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vName"
+        android:id="@+id/lblCat" />
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblCat"
+        android:layout_marginBottom="5dp"
+        android:entries="@array/locCategoryDisplay"
+        android:entryValues="@array/locCategoryValues"
+        android:id="@+id/catSpinner" />
+    <TextView
+        android:layout_below="@+id/catSpinner"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Notes:"
         android:layout_width="fill_parent"

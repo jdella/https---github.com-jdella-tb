@@ -1,12 +1,13 @@
-﻿<Properties StartupItem="TB.Droid\TB.Droid.csproj">
+﻿<Properties StartupItem="TB.Droid\TB.Droid.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
   <MonoDevelop.Ide.Workbench ActiveDocument="TB.Droid\Screens\MapScreen.cs">
     <Files>
-      <File FileName="TB.Droid\Screens\MapScreen.cs" Line="83" Column="60" />
+      <File FileName="TB.Droid\Screens\MapScreen.cs" Line="90" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.TB.Droid AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>

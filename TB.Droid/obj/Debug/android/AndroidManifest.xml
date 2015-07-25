@@ -6,15 +6,15 @@
     <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC4j_tC-GB4nbBi66JdpqXkBHfqYieqsjM" />
     <meta-data android:name="com.google.android.gms.version" android:value="google_play_services_version" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-    <activity android:label="TaskBuddi" android:name="md59860e1718f52465d1dfc92696a76be7a.HomeScreen">
+    <activity android:label="TaskBuddi" android:name="md5cb87408147b2eacaac3ab61cf6a8f5ba.HomeScreen">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:label="Task Details" android:name="md59860e1718f52465d1dfc92696a76be7a.TaskDetailsScreen" />
-    <activity android:label="Task Map" android:name="md55bb2df52dd392377883ceb1b697439f7.MapScreen" />
-    <activity android:label="Task Group Details" android:name="md59860e1718f52465d1dfc92696a76be7a.TaskGroupDetailsScreen" />
+    <activity android:label="Task Details" android:name="md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskDetailsScreen" />
+    <activity android:label="Task Map" android:name="md5a57d8b6141da95e1f889e5be11f8a672.MapScreen" />
+    <activity android:label="Task Group Details" android:name="md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskGroupDetailsScreen" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.dellapz.taskbuddi.mono.MonoRuntimeProvider.__mono_init__" />
     <receiver android:name="mono.android.Seppuku">
       <intent-filter>

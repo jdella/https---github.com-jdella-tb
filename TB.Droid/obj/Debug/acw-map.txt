@@ -1,39 +1,39 @@
-TaskBuddi.Droid.Screens.HomeScreen, TB.Android;md59860e1718f52465d1dfc92696a76be7a.HomeScreen
-TaskBuddi.Droid.Screens.HomeScreen, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md59860e1718f52465d1dfc92696a76be7a.HomeScreen
-TaskBuddi.Droid.Screens.HomeScreen;md59860e1718f52465d1dfc92696a76be7a.HomeScreen
-taskbuddi.droid.screens.HomeScreen;md59860e1718f52465d1dfc92696a76be7a.HomeScreen
-TaskBuddi.Droid.Screens.TaskDetailsScreen, TB.Android;md59860e1718f52465d1dfc92696a76be7a.TaskDetailsScreen
-TaskBuddi.Droid.Screens.TaskDetailsScreen, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md59860e1718f52465d1dfc92696a76be7a.TaskDetailsScreen
-TaskBuddi.Droid.Screens.TaskDetailsScreen;md59860e1718f52465d1dfc92696a76be7a.TaskDetailsScreen
-taskbuddi.droid.screens.TaskDetailsScreen;md59860e1718f52465d1dfc92696a76be7a.TaskDetailsScreen
-TaskBuddi.Droid.MapScreen, TB.Android;md55bb2df52dd392377883ceb1b697439f7.MapScreen
-TaskBuddi.Droid.MapScreen, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md55bb2df52dd392377883ceb1b697439f7.MapScreen
-TaskBuddi.Droid.MapScreen;md55bb2df52dd392377883ceb1b697439f7.MapScreen
-taskbuddi.droid.MapScreen;md55bb2df52dd392377883ceb1b697439f7.MapScreen
-TaskBuddi.Droid.Screens.TaskGroupDetailsScreen, TB.Android;md59860e1718f52465d1dfc92696a76be7a.TaskGroupDetailsScreen
-TaskBuddi.Droid.Screens.TaskGroupDetailsScreen, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md59860e1718f52465d1dfc92696a76be7a.TaskGroupDetailsScreen
-TaskBuddi.Droid.Screens.TaskGroupDetailsScreen;md59860e1718f52465d1dfc92696a76be7a.TaskGroupDetailsScreen
-taskbuddi.droid.screens.TaskGroupDetailsScreen;md59860e1718f52465d1dfc92696a76be7a.TaskGroupDetailsScreen
-TaskBuddi.Droid.Adapters.TaskGroupListAdapter, TB.Android;md50c6a0d371771a6003272e6b6a2737ba3.TaskGroupListAdapter
-TaskBuddi.Droid.Adapters.TaskGroupListAdapter, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md50c6a0d371771a6003272e6b6a2737ba3.TaskGroupListAdapter
-TaskBuddi.Droid.Adapters.TaskGroupListAdapter;md50c6a0d371771a6003272e6b6a2737ba3.TaskGroupListAdapter
-taskbuddi.droid.adapters.TaskGroupListAdapter;md50c6a0d371771a6003272e6b6a2737ba3.TaskGroupListAdapter
-TaskBuddi.Droid.Adapters.GroupSpinnerAdapter, TB.Android;md50c6a0d371771a6003272e6b6a2737ba3.GroupSpinnerAdapter
-TaskBuddi.Droid.Adapters.GroupSpinnerAdapter, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md50c6a0d371771a6003272e6b6a2737ba3.GroupSpinnerAdapter
-TaskBuddi.Droid.Adapters.GroupSpinnerAdapter;md50c6a0d371771a6003272e6b6a2737ba3.GroupSpinnerAdapter
-taskbuddi.droid.adapters.GroupSpinnerAdapter;md50c6a0d371771a6003272e6b6a2737ba3.GroupSpinnerAdapter
+TaskBuddi.Droid.Screens.HomeScreen, TB.Android;md5cb87408147b2eacaac3ab61cf6a8f5ba.HomeScreen
+TaskBuddi.Droid.Screens.HomeScreen, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5cb87408147b2eacaac3ab61cf6a8f5ba.HomeScreen
+TaskBuddi.Droid.Screens.HomeScreen;md5cb87408147b2eacaac3ab61cf6a8f5ba.HomeScreen
+taskbuddi.droid.screens.HomeScreen;md5cb87408147b2eacaac3ab61cf6a8f5ba.HomeScreen
+TaskBuddi.Droid.Screens.TaskDetailsScreen, TB.Android;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskDetailsScreen
+TaskBuddi.Droid.Screens.TaskDetailsScreen, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskDetailsScreen
+TaskBuddi.Droid.Screens.TaskDetailsScreen;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskDetailsScreen
+taskbuddi.droid.screens.TaskDetailsScreen;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskDetailsScreen
+TaskBuddi.Droid.MapScreen, TB.Android;md5a57d8b6141da95e1f889e5be11f8a672.MapScreen
+TaskBuddi.Droid.MapScreen, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5a57d8b6141da95e1f889e5be11f8a672.MapScreen
+TaskBuddi.Droid.MapScreen;md5a57d8b6141da95e1f889e5be11f8a672.MapScreen
+taskbuddi.droid.MapScreen;md5a57d8b6141da95e1f889e5be11f8a672.MapScreen
+TaskBuddi.Droid.Screens.TaskGroupDetailsScreen, TB.Android;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskGroupDetailsScreen
+TaskBuddi.Droid.Screens.TaskGroupDetailsScreen, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskGroupDetailsScreen
+TaskBuddi.Droid.Screens.TaskGroupDetailsScreen;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskGroupDetailsScreen
+taskbuddi.droid.screens.TaskGroupDetailsScreen;md5cb87408147b2eacaac3ab61cf6a8f5ba.TaskGroupDetailsScreen
+TaskBuddi.Droid.Adapters.TaskGroupListAdapter, TB.Android;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.TaskGroupListAdapter
+TaskBuddi.Droid.Adapters.TaskGroupListAdapter, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.TaskGroupListAdapter
+TaskBuddi.Droid.Adapters.TaskGroupListAdapter;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.TaskGroupListAdapter
+taskbuddi.droid.adapters.TaskGroupListAdapter;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.TaskGroupListAdapter
+TaskBuddi.Droid.Adapters.GroupSpinnerAdapter, TB.Android;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.GroupSpinnerAdapter
+TaskBuddi.Droid.Adapters.GroupSpinnerAdapter, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.GroupSpinnerAdapter
+TaskBuddi.Droid.Adapters.GroupSpinnerAdapter;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.GroupSpinnerAdapter
+taskbuddi.droid.adapters.GroupSpinnerAdapter;md5fb8d489f7671e7dd1d8ce4fe409d5f5a.GroupSpinnerAdapter
 TaskBuddi.Droid.AutoGrid, TB.Android;taskbuddi.droid.AutoGrid
-TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;taskbuddi.droid.AutoGrid
+TaskBuddi.Droid.AutoGrid, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;taskbuddi.droid.AutoGrid
 TaskBuddi.Droid.AutoGrid;taskbuddi.droid.AutoGrid
 taskbuddi.droid.AutoGrid;taskbuddi.droid.AutoGrid
-TaskBuddi.Droid.LocationService, TB.Android;md55bb2df52dd392377883ceb1b697439f7.LocationService
-TaskBuddi.Droid.LocationService, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md55bb2df52dd392377883ceb1b697439f7.LocationService
-TaskBuddi.Droid.LocationService;md55bb2df52dd392377883ceb1b697439f7.LocationService
-taskbuddi.droid.LocationService;md55bb2df52dd392377883ceb1b697439f7.LocationService
-TaskBuddi.Droid.LocationService/LocationBinder, TB.Android;md55bb2df52dd392377883ceb1b697439f7.LocationService_LocationBinder
-TaskBuddi.Droid.LocationService/LocationBinder, TB.Android, Version=1.0.5684.34294, Culture=neutral, PublicKeyToken=null;md55bb2df52dd392377883ceb1b697439f7.LocationService_LocationBinder
-TaskBuddi.Droid.LocationService.LocationBinder;md55bb2df52dd392377883ceb1b697439f7.LocationService_LocationBinder
-taskbuddi.droid.LocationService_LocationBinder;md55bb2df52dd392377883ceb1b697439f7.LocationService_LocationBinder
+TaskBuddi.Droid.LocationService, TB.Android;md5a57d8b6141da95e1f889e5be11f8a672.LocationService
+TaskBuddi.Droid.LocationService, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5a57d8b6141da95e1f889e5be11f8a672.LocationService
+TaskBuddi.Droid.LocationService;md5a57d8b6141da95e1f889e5be11f8a672.LocationService
+taskbuddi.droid.LocationService;md5a57d8b6141da95e1f889e5be11f8a672.LocationService
+TaskBuddi.Droid.LocationService/LocationBinder, TB.Android;md5a57d8b6141da95e1f889e5be11f8a672.LocationService_LocationBinder
+TaskBuddi.Droid.LocationService/LocationBinder, TB.Android, Version=1.0.5685.19180, Culture=neutral, PublicKeyToken=null;md5a57d8b6141da95e1f889e5be11f8a672.LocationService_LocationBinder
+TaskBuddi.Droid.LocationService.LocationBinder;md5a57d8b6141da95e1f889e5be11f8a672.LocationService_LocationBinder
+taskbuddi.droid.LocationService_LocationBinder;md5a57d8b6141da95e1f889e5be11f8a672.LocationService_LocationBinder
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor, GooglePlayServicesLib;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor, GooglePlayServicesLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor

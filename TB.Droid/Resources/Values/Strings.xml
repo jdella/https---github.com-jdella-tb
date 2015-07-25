@@ -1,4 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">TaskBuddi!</string>
+    <string name="app_name">TaskBuddi!</string>
+
+    <!---SPINNER ARRAYS -->
+
+    <!---filtered list of Google Place types-->
+    <string-array name="locCategoryValues">
+        <item>null</item>
+        <item>accounting  </item>
+        <item>airport </item>
+        <!--        <item>amusement_park  </item>-->
+        <!--        <item>aquarium    </item>
+        <item>art_gallery </item>-->
+        <item>atm </item>
+        <item>bakery  </item>
+        <item>bank    </item>
+        <!--        <item>bar </item>-->
+        <item>beauty_salon    </item>
+        <item>bicycle_store   </item>
+        <item>book_store  </item>
+        <!--        <item>bowling_alley   </item>-->
+        <!--        <item>bus_station </item>-->
+        <!--        <item>cafe    </item>-->
+        <!--        <item>campground  </item>-->
+        <!--- CAR -->
+        <item>car_dealer  </item>
+        <item>car_rental  </item>
+        <item>car_repair  </item>
+        <item>car_wash    </item>
+        <!--        <item>casino  </item>
+        <item>cemetery    </item>
+        <item>church  </item>
+        <item>city_hall   </item>-->
+        <item>clothing_store  </item>
+        <item>convenience_store   </item>
+        <item>courthouse  </item>
+        <item>dentist </item>
+        <item>department_store    </item>
+        <item>doctor  </item>
+        <item>electrician </item>
+        <item>electronics_store   </item>
+        <!--        <item>embassy </item>
+        <item>establishment   </item>
+        <item>finance </item>
+        <item>fire_station    </item>-->
+        <item>florist </item>
+        <!--        <item>food    </item>
+        <item>funeral_home    </item>-->
+        <item>furniture_store </item>
+        <item>gas_station </item>
+        <!--        <item>general_contractor  </item>-->
+        <item>grocery_or_supermarket  </item>
+        <item>gym </item>
+        <item>hair_care   </item>
+        <item>hardware_store  </item>
+        <item>health  </item>
+        <!--        <item>hindu_temple    </item>-->
+        <item>home_goods_store    </item>
+        <!--        <item>hospital    </item>-->
+        <item>insurance_agency    </item>
+        <item>jewelry_store   </item>
+        <item>laundry </item>
+        <item>lawyer  </item>
+        <item>library </item>
+        <item>liquor_store    </item>
+        <!--        <item>local_government_office </item>-->
+        <item>locksmith   </item>
+        <!--        <item>lodging </item>
+        <item>meal_delivery   </item>-->
+        <item>meal_takeaway   </item>
+        <!--        <item>mosque  </item>-->
+        <item>movie_rental    </item>
+        <!--        <item>movie_theater   </item>
+        <item>moving_company  </item>
+        <item>museum  </item>
+        <item>night_club  </item>-->
+        <item>painter </item>
+        <!--        <item>park    </item>
+        <item>parking </item>-->
+        <item>pet_store   </item>
+        <item>pharmacy    </item>
+        <item>physiotherapist </item>
+        <!--        <item>place_of_worship    </item>-->
+        <item>plumber </item>
+        <item>police  </item>
+        <item>post_office </item>
+        <item>real_estate_agency  </item>
+        <item>restaurant  </item>
+        <item>roofing_contractor  </item>
+        <!--        <item>rv_park </item>-->
+        <!--        <item>school  </item>-->
+        <item>shoe_store  </item>
+        <item>shopping_mall   </item>
+        <!--        <item>spa </item>
+        <item>stadium </item>
+        <item>storage </item>-->
+        <item>store   </item>
+        <!--        <item>subway_station  </item>
+        <item>synagogue   </item>
+        <item>taxi_stand  </item>
+        <item>train_station   </item>-->
+        <item>travel_agency   </item>
+        <!--        <item>university  </item>-->
+        <item>veterinary_care </item>
+        <!--        <item>zoo </item>-->
+    </string-array>
+    <!---display names for above category values-->
+    <string-array name="locCategoryDisplay">
+        <item>-Select a category-</item>
+        <item>  Accounting    </item>
+        <item>  Airport  </item>
+        <item>  Atm  </item>
+        <item>  Bakery    </item>
+        <item>  Bank        </item>
+        <item>  Beauty Salon        </item>
+        <item>  Bicycle Store      </item>
+        <item>  Book Store    </item>
+        <item>  Car Dealer    </item>
+        <item>  Car Rental    </item>
+        <item>  Car Repair    </item>
+        <item>  Car Wash        </item>
+        <item>  Cemetery        </item>
+        <item>  Church    </item>
+        <item>  Clothing Store    </item>
+        <item>  Convenience Store      </item>
+        <item>  Courthouse    </item>
+        <item>  Dentist  </item>
+        <item>  Department Store        </item>
+        <item>  Doctor    </item>
+        <item>  Electrician  </item>
+        <item>  Electronics Store      </item>
+        <item>  Establishment      </item>
+        <item>  Finance  </item>
+        <item>  Florist  </item>
+        <item>  Furniture Store  </item>
+        <item>  Gas Station  </item>
+        <item>  Grocery Or Supermarket    </item>
+        <item>  Gym  </item>
+        <item>  Hair Care      </item>
+        <item>  Hardware Store    </item>
+        <item>  Health    </item>
+        <item>  Home Goods Store        </item>
+        <item>  Insurance Agency        </item>
+        <item>  Jewelry Store      </item>
+        <item>  Laundry  </item>
+        <item>  Lawyer    </item>
+        <item>  Library  </item>
+        <item>  Liquor Store        </item>
+        <item>  Locksmith      </item>
+        <item>  Meal Takeaway      </item>
+        <item>  Movie Rental        </item>
+        <item>  Moving Company    </item>
+        <item>  Museum    </item>
+        <item>  Painter  </item>
+        <item>  Pet Store      </item>
+        <item>  Pharmacy        </item>
+        <item>  Physiotherapist  </item>
+        <item>  Plumber  </item>
+        <item>  Police    </item>
+        <item>  Post Office  </item>
+        <item>  Real Estate Agency    </item>
+        <item>  Restaurant    </item>
+        <item>  Roofing Contractor    </item>
+        <item>  Shoe Store    </item>
+        <item>  Shopping Mall      </item>
+        <item>  Stadium  </item>
+        <item>  Store      </item>
+        <item>  Synagogue      </item>
+        <item>  Taxi Stand    </item>
+        <item>  Travel Agency      </item>
+        <item>  Veterinary Care  </item>
+    </string-array>
 </resources>

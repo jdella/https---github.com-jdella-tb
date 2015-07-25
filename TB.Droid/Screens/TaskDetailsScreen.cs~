@@ -29,49 +29,61 @@ namespace TaskBuddi.Droid.Screens
     public class TaskDetailsScreen : Activity
     {
         protected Task task = new Task();
+        protected List<TaskGroup> groupList;
+        protected string[] categoryValues;
         //Controls
         protected EditText vName;
         protected EditText vNotes;
         protected CheckBox vDone;
+        protected Spinner vCategory;
         protected Spinner tdAssignedTo;
 
         protected override void OnCreate(Bundle bundle)
         {
             // Init Screen
             base.OnCreate(bundle);
+            InitViewControls();						
+
+            //Load Task Details, if any
+            var taskId = Intent.GetIntExtra("id", 0); //default
+            if (taskId != 0)
+            {
+                LoadTask(taskId);
+            }
+        }
+
+        private void InitViewControls()
+        {
             // action bar
             RequestWindowFeature(WindowFeatures.ActionBar);
             ActionBar.SetDisplayHomeAsUpEnabled(true);
             ActionBar.SetHomeButtonEnabled(true);
-            // view/controls
+
+            // grab view controls
             SetContentView(Resource.Layout.TaskDetails);
             vName = FindViewById<EditText>(Resource.Id.vName);
             vNotes = FindViewById<EditText>(Resource.Id.tdNotes);
+            vCategory = FindViewById<Spinner>(Resource.Id.catSpinner);
             vDone = FindViewById<CheckBox>(Resource.Id.vDone);
-
             // Init TaskGroups spinner 
-            var groupList = TaskGroupManager
-                .GetTaskGroups()
-                .OrderBy(g => g.Name)
-                .ToList(); 
+            groupList = TaskGroupManager.GetTaskGroups().OrderBy(g => g.Name).ToList(); 
             tdAssignedTo = FindViewById<Spinner>(Resource.Id.tdAssignedTo);
-            tdAssignedTo.Adapter = new GroupSpinnerAdapter(this, groupList);			
+            tdAssignedTo.Adapter = new GroupSpinnerAdapter(this, groupList);
+        }
 
-            //Load TaskGroup Details, if any
-            var taskId = Intent.GetIntExtra("id", 0); //default
-            if (taskId != 0)
-            {
-                //get Task
-                task = TaskManager.GetTask(taskId);
-                // Load task details
-                vName.Text = task.Name;
-                vNotes.Text = task.Notes;
-                vDone.Visibility = task.Done ? 
-                    ViewStates.Visible : ViewStates.Gone;
-                // set spinner to current group
-                var idArray = groupList.Select(g => g.ID).ToArray();
-                tdAssignedTo.SetSelection(Array.IndexOf(idArray, task.GroupId));
-            }
+        private void LoadTask(int taskId)
+        {
+            //get Task
+            task = TaskManager.GetTask(taskId);
+            // Load task details
+            vName.Text = task.Name;
+            vNotes.Text = task.Notes;
+            vDone.Visibility = task.Done ? ViewStates.Visible : ViewStates.Gone;
+            // set spinners
+            categoryValues = Resources.GetStringArray(Resource.Array.locCategoryValues);
+            vCategory.SetSelection(Array.IndexOf(categoryValues, task.Category));
+            var idArray = groupList.Select(g => g.ID).ToArray();
+            tdAssignedTo.SetSelection(Array.IndexOf(idArray, task.GroupId));
         }
 
         protected void Save()
@@ -79,6 +91,7 @@ namespace TaskBuddi.Droid.Screens
             task.Name = vName.Text;
             task.Notes = vNotes.Text;
             task.GroupId = (Int32)tdAssignedTo.SelectedItemId;
+            task.Category = categoryValues[vCategory.SelectedItemPosition];
             task.Done = vDone.Checked;
             TaskManager.SaveTask(task);
         }

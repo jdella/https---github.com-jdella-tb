@@ -1,6 +1,9 @@
 C:\Working\TaskBuddi.Droid\tb\TB.Droid\bin\Debug\TB.Android.dll
 C:\Working\TaskBuddi.Droid\tb\packages\Xamarin.Forms.1.4.2.6359\lib\MonoAndroid10\FormsViewGroup.dll
 C:\Working\TaskBuddi.Droid\tb\Components\googleplayservicesjellybean-16.0\lib\android\GooglePlayServicesLib.dll
+C:\Working\TaskBuddi.Droid\tb\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll
+C:\Working\TaskBuddi.Droid\tb\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Extensions.dll
+C:\Working\TaskBuddi.Droid\tb\packages\Microsoft.Net.Http.2.2.29\lib\monoandroid\System.Net.Http.Primitives.dll
 C:\Working\TaskBuddi.Droid\tb\packages\Xamarin.Android.Support.v4.22.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll
 C:\Working\TaskBuddi.Droid\tb\packages\Xamarin.Forms.1.4.2.6359\lib\MonoAndroid10\Xamarin.Forms.Core.dll
 C:\Working\TaskBuddi.Droid\tb\packages\Xamarin.Forms.1.4.2.6359\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll

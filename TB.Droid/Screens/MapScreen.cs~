@@ -4,6 +4,10 @@ using Android.Content;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TaskBuddi.Droid
 {
@@ -12,6 +16,7 @@ namespace TaskBuddi.Droid
     using Android.Gms.Maps.Model;
     using Android.OS;
     using Android.Widget;
+    using System.Net.Http;
 
     [Activity(Label = "Task Map")]
     public class MapScreen : Activity, ILocationListener
@@ -80,7 +85,7 @@ namespace TaskBuddi.Droid
             if (_mapFragment == null)
             {
                 GoogleMapOptions mapOptions = new GoogleMapOptions()
-                    .InvokeMapType(GoogleMap.MapTypeSatellite)
+                    .InvokeMapType(GoogleMap.MapTypeNormal)
 					.InvokeZoomControlsEnabled(true)
 					.InvokeCompassEnabled(true);
                 
@@ -105,14 +110,45 @@ namespace TaskBuddi.Droid
         {
             if (_map != null && _currentLocation != null)
             {
+                var req = HttpWebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+                    "location=" + _currentLocation.Latitude + "," + _currentLocation.Longitude + "&radius=5000&types=pet_store&name=pet" +
+                    "&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
+                //"location=-33.8670522,151.1957362&radius=5000&types=pet_store&name=pet&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
+                req.ContentType = "application/json";
+                req.Method = "GET";
+                using (HttpWebResponse res = req.GetResponse() as HttpWebResponse)
+                {
+                    if (res.StatusCode != HttpStatusCode.OK)
+                        Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", res.StatusCode);
+                    using (var reader = new StreamReader(res.GetResponseStream()))
+                    {
+                        var data = reader.ReadToEnd();
+                        var jdata = JObject.Parse(data);						
+                        foreach (var loc in jdata["results"])
+                        {
+                            var locMarker = new MarkerOptions();
+                            var lpos = new LatLng(Convert.ToDouble(loc["geometry"]["location"]["lat"]), 
+                                Convert.ToDouble(loc["geometry"]["location"]["lng"]));
+                            locMarker.SetPosition(lpos);
+                            locMarker.SetTitle(loc["name"].ToString());
+                            locMarker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue));
+                            _map.AddMarker(locMarker);
+                        }
+                        //k["results"][0]["geometry"]["location"]["lat"]
+//						if (string.IsNullOrWhiteSpace(data))
+//							Console.Out.WriteLine("Response contained empty body...");
+//						else
+//							Console.Out.WriteLine("Response Body: \r\n {0}", data);
+                    }
+                }
+                //Current location
                 marker = new MarkerOptions();
                 var pos = new LatLng(_currentLocation.Latitude, _currentLocation.Longitude);
                 marker.SetPosition(pos);
                 marker.SetTitle("Current");
                 marker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue));
                 _map.AddMarker(marker);
-
-                // We create an instance of CameraUpdate, and move the map to it.
+                // Recenter...
                 CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(pos, 15);
                 _map.MoveCamera(cameraUpdate);
                 GetDeviceLocation();

@@ -1,19 +1,12 @@
 ﻿<Properties StartupItem="TB.Droid\TB.Droid.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (KitKat)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Working\TaskBuddi.Droid\tb\TB.Core\BusinessLayer\Managers\TaskGroupManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TB.Droid\Screens\MapScreen.cs">
     <Files>
-      <File FileName="TB.Droid\Screens\HomeScreen.cs" Line="6" Column="21" />
-      <File FileName="TB.Droid\Adapters\TaskGroupListAdapter.cs" Line="66" Column="5" />
-      <File FileName="TB.Droid\Adapters\TaskListAdapter.OLD" Line="46" Column="54" />
-      <File FileName="c:\Working\TaskBuddi.Droid\tb\TB.Core\BusinessLayer\Managers\TaskGroupManager.cs" Line="25" Column="4" />
-      <File FileName="TB.Core\DataAccessLayer\TaskRepository.cs" Line="58" Column="70" />
+      <File FileName="TB.Droid\Screens\MapScreen.cs" Line="83" Column="60" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Working\TaskBuddi.Droid\TB.Droid\Screens\LocationService.cs" line="78" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.TB.Droid AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>

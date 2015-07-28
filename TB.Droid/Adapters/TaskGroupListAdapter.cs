@@ -16,7 +16,6 @@ namespace TaskBuddi.Droid.Adapters
 	{
 		protected Activity context = null;
 		protected IList<TaskGroup> taskGroups = new List<TaskGroup>();
-		protected int DUMMY_VIEW = -666;
 		protected LinearLayout vLayout;
 
 		public TaskGroupListAdapter(Activity context)

@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace TaskBuddi.BL
+{
+    public class LocationCategory
+    {
+        public LocationCategory()
+        {
+        }
+
+        //		[PrimaryKey]
+        //		public string Name { get; set; }
+    }
+}
+   

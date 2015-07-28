@@ -9,6 +9,10 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+using TaskBuddi.BL.Managers;
+using TaskBuddi.BL;
+using System.Threading;
+
 namespace TaskBuddi.Droid
 {
     using Android.App;
@@ -23,8 +27,12 @@ namespace TaskBuddi.Droid
     {
         protected GoogleMap _map;
         protected MapFragment _mapFragment;
-        MarkerOptions marker;
+        protected MarkerOptions marker;
 		
+        protected List<Task> tasks;
+        protected string[] taskCategories;
+        protected int[] taskCatCount;
+
         protected TextView vDebug;
 		
         protected Location _currentLocation;
@@ -45,12 +53,24 @@ namespace TaskBuddi.Droid
 
             InitMapFragment();
             InitLocationManager();
+            InitTaskCategoryArrays();
 
             //** TODO Bind to Background Location Service implmentation**//
             //_locationManager = GetSystemService(Context.LocationService) as LocationManager;
             //StartService(new Intent(this, typeof(LocationService)));
             //var intent = new Intent(this, typeof(LocationService));
             //BindService(intent, _locationService, Bind.AutoCreate);
+        }
+
+        private void InitTaskCategoryArrays()
+        {
+            tasks = TaskManager.GetTasks().ToList();
+            taskCategories = tasks.Select(x => x.Category).Distinct().ToArray();
+            taskCatCount = new int[taskCategories.Length];
+            for (var i = 0; i < taskCategories.Length; i++)
+            {
+                taskCatCount[i] = tasks.Count(x => x.Category == taskCategories[i]);
+            }
         }
 
         protected override void OnResume()
@@ -102,60 +122,139 @@ namespace TaskBuddi.Droid
             if (_map == null)
             {
                 _map = _mapFragment.Map;
+                RecenterMap();
                 UpdateMarker();
             }
         }
 
-        private void UpdateMarker()
+        void UpdateMarker()
         {
             if (_map != null && _currentLocation != null)
             {
-                var req = HttpWebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-                    "location=" + _currentLocation.Latitude + "," + _currentLocation.Longitude + "&radius=5000&types=pet_store&name=pet" +
-                    "&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
-                //"location=-33.8670522,151.1957362&radius=5000&types=pet_store&name=pet&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
-                req.ContentType = "application/json";
-                req.Method = "GET";
-                using (HttpWebResponse res = req.GetResponse() as HttpWebResponse)
-                {
-                    if (res.StatusCode != HttpStatusCode.OK)
-                        Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", res.StatusCode);
-                    using (var reader = new StreamReader(res.GetResponseStream()))
-                    {
-                        var data = reader.ReadToEnd();
-                        var jdata = JObject.Parse(data);						
-                        foreach (var loc in jdata["results"])
-                        {
-                            var locMarker = new MarkerOptions();
-                            var lpos = new LatLng(Convert.ToDouble(loc["geometry"]["location"]["lat"]), 
-                                Convert.ToDouble(loc["geometry"]["location"]["lng"]));
-                            locMarker.SetPosition(lpos);
-                            locMarker.SetTitle(loc["name"].ToString());
-                            locMarker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue));
-                            _map.AddMarker(locMarker);
-                        }
-                        //k["results"][0]["geometry"]["location"]["lat"]
-//						if (string.IsNullOrWhiteSpace(data))
-//							Console.Out.WriteLine("Response contained empty body...");
-//						else
-//							Console.Out.WriteLine("Response Body: \r\n {0}", data);
-                    }
-                }
-                //Current location
+                // outputs device location address to screen for debugging
+                //GetDeviceLocationAddress();
+                _map.Clear();
+
+                // Current location marker
                 marker = new MarkerOptions();
                 var pos = new LatLng(_currentLocation.Latitude, _currentLocation.Longitude);
                 marker.SetPosition(pos);
                 marker.SetTitle("Current");
                 marker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueBlue));
                 _map.AddMarker(marker);
-                // Recenter...
-                CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(pos, 15);
-                _map.MoveCamera(cameraUpdate);
-                GetDeviceLocation();
+
+                //TODO - filter options? & set search constants? & implement keywords?
+                // loop thru all active task categories
+                const int RADIUS = 500;
+                if (true)
+                {
+//					foreach (var t in tasks)
+//					{       
+//						ThreadPool.QueueUserWorkItem(o => GetTaskLocations(t));
+//						//GetTaskLocations(t);						
+//					}
+                    for (var i = 0; i < taskCategories.Length; i++)
+                    {                    
+                        var req = HttpWebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+                            "location=" + _currentLocation.Latitude + "," + _currentLocation.Longitude +
+							                            //"&radius=" + RADIUS + 
+                            "&rankby=distance" +
+                            "&types=" + taskCategories[i] +
+							                            //"&keyword=" + tasks[i].Keywords +
+                            "&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
+                        req.ContentType = "application/json";
+                        req.Method = "GET";
+                        using (HttpWebResponse res = req.GetResponse() as HttpWebResponse)
+                        {
+                            if (res.StatusCode != HttpStatusCode.OK)
+                                Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", res.StatusCode);
+                            using (var reader = new StreamReader(res.GetResponseStream()))
+                            {
+                                //var data = reader.ReadToEnd();
+                                //TODO - if (string.IsNullOrWhiteSpace(data)) null check ?
+                                var jdata = JObject.Parse(reader.ReadToEnd());
+                                var results = jdata["results"];
+                                for (var l = 0; l < 3 && l < results.Count(); l++) //jdata["results"])
+                                {                                    
+                                    var locMarker = new MarkerOptions();
+                                    var lpos = new LatLng(Convert.ToDouble(results[l]["geometry"]["location"]["lat"]), 
+                                        Convert.ToDouble(results[l]["geometry"]["location"]["lng"]));
+                                    locMarker.SetPosition(lpos);
+                                    locMarker.SetTitle(results[l]["name"] + " (" + taskCatCount[i] + ")");
+                                    var snippet = "Category: " + taskCategories[i];
+                                    foreach (var task in tasks.Where(x=>x.Category == taskCategories[i]))
+                                    {
+                                        snippet += "\n- " + task.Name;
+                                    }
+                                    locMarker.SetSnippet(snippet);
+                                    //TODO colour enum / set different colours on markers...
+                                    //eg by Group / Priority / No. of Tasks / Category - make this an option?
+                                    locMarker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueYellow));
+                                    _map.AddMarker(locMarker);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
-        //LOCATION METHODS
-        async void GetDeviceLocation()
+
+        async void GetTaskLocations(Task t)
+        {
+            var req = HttpWebRequest.Create("https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+                 "location=" + _currentLocation.Latitude + "," + _currentLocation.Longitude +
+                //"&radius=" + RADIUS + 
+                 "&rankby=distance" +
+                 "&types=" + t.Category +
+                 "&keyword=" + t.Keywords +
+                 "&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
+            req.ContentType = "application/json";
+            req.Method = "GET";
+            using (HttpWebResponse res = req.GetResponse() as HttpWebResponse)
+            {
+                if (res.StatusCode != HttpStatusCode.OK)
+                    Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", res.StatusCode);
+                using (var reader = new StreamReader(res.GetResponseStream()))
+                {
+                    //var data = reader.ReadToEnd();
+                    //TODO - if (string.IsNullOrWhiteSpace(data)) null check ?
+                    var jdata = JObject.Parse(reader.ReadToEnd());
+                    var results = jdata["results"];
+                    for (var l = 0; l < 3; l++) //jdata["results"])
+                    {
+                        var locMarker = new MarkerOptions();
+                        var lpos = new LatLng(Convert.ToDouble(results[l]["geometry"]["location"]["lat"]), 
+                            Convert.ToDouble(results[l]["geometry"]["location"]["lng"]));
+                        locMarker.SetPosition(lpos);
+                        locMarker.SetTitle(results[l]["name"].ToString());// + " (" + taskCatCount[i] + ")");
+                        var BR = System.Environment.NewLine;
+                        var snippet = "Category: " + t.Category + BR + t.Name + BR;
+                        //                                    foreach (var task in tasks.Where(x=>x.Category == taskCategories[i]))
+                        //                                    {
+                        //                                        snippet += "\n- " + task.Name;
+                        //                                    }
+                        locMarker.SetSnippet(snippet);
+                        //TODO colour enum / set different colours on markers...
+                        //eg by Group / Priority / No. of Tasks / Category - make this an option?
+                        locMarker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueYellow));
+                        _map.AddMarker(locMarker);
+                    }
+                }
+            }
+        }
+
+        private void RecenterMap()
+        {
+            if (_map != null && _currentLocation != null)
+            {
+                CameraUpdate cameraUpdate = CameraUpdateFactory.NewLatLngZoom(
+                                    new LatLng(_currentLocation.Latitude, _currentLocation.Longitude), 15);
+                _map.MoveCamera(cameraUpdate);
+            }
+        }
+            
+        // outputs device location address to screen for debugging
+        async void GetDeviceLocationAddress()
         {
             // debug result string
             var log = "No location";
@@ -185,11 +284,13 @@ namespace TaskBuddi.Droid
             vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log;
         }
 
+        //LOCATION PROVIDER EVENTS
         public void OnLocationChanged(Location location)
         {
             _currentLocation = location;
             if (_currentLocation != null)
             {
+                RecenterMap();
                 UpdateMarker();
             }
         }

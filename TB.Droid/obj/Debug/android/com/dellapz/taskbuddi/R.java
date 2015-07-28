@@ -10,11 +10,11 @@ package com.dellapz.taskbuddi;
 public final class R {
     public static final class array {
         /** -display names for above category values
+-TODO - put these in db...
          */
         public static final int locCategoryDisplay=0x7f070001;
         /** -SPINNER ARRAYS 
 -filtered list of Google Place types
-        <item>zoo </item>
          */
         public static final int locCategoryValues=0x7f070000;
     }
@@ -228,37 +228,39 @@ containing a value of this type.
     }
     public static final class id {
         public static final int catSpinner=0x7f0a000f;
-        public static final int checkmark=0x7f0a0016;
+        public static final int checkmark=0x7f0a0018;
         public static final int hybrid=0x7f0a0000;
         public static final int layoutMain=0x7f0a0008;
         public static final int lblCat=0x7f0a000e;
         public static final int lblGroup=0x7f0a000a;
+        public static final int lblKeywords=0x7f0a0010;
         public static final int lblName=0x7f0a000c;
-        public static final int lblNotes=0x7f0a0010;
-        public static final int menu_add_task=0x7f0a001e;
-        public static final int menu_add_taskGroup=0x7f0a001d;
-        public static final int menu_delete=0x7f0a001c;
-        public static final int menu_save=0x7f0a001b;
-        public static final int menu_show_map=0x7f0a001f;
+        public static final int lblNotes=0x7f0a0012;
+        public static final int menu_add_task=0x7f0a0020;
+        public static final int menu_add_taskGroup=0x7f0a001f;
+        public static final int menu_delete=0x7f0a001e;
+        public static final int menu_save=0x7f0a001d;
+        public static final int menu_show_map=0x7f0a0021;
         public static final int none=0x7f0a0001;
         public static final int normal=0x7f0a0002;
         public static final int satellite=0x7f0a0003;
         public static final int tdAssignedTo=0x7f0a000b;
         public static final int tdHeader=0x7f0a0009;
-        public static final int tdLayout=0x7f0a001a;
-        public static final int tdNotes=0x7f0a0011;
+        public static final int tdLayout=0x7f0a001c;
+        public static final int tdNotes=0x7f0a0013;
         public static final int terrain=0x7f0a0004;
-        public static final int vCheck=0x7f0a0019;
+        public static final int vCheck=0x7f0a001b;
         public static final int vDebug=0x7f0a0006;
-        public static final int vDone=0x7f0a0012;
+        public static final int vDone=0x7f0a0014;
         public static final int vFrame=0x7f0a0005;
-        public static final int vGroupId=0x7f0a0013;
-        public static final int vGroupName=0x7f0a0017;
-        public static final int vLayout=0x7f0a0015;
-        public static final int vMain=0x7f0a0014;
+        public static final int vGroupId=0x7f0a0015;
+        public static final int vGroupName=0x7f0a0019;
+        public static final int vKeywords=0x7f0a0011;
+        public static final int vLayout=0x7f0a0017;
+        public static final int vMain=0x7f0a0016;
         public static final int vMap=0x7f0a0007;
         public static final int vName=0x7f0a000d;
-        public static final int vTaskRow=0x7f0a0018;
+        public static final int vTaskRow=0x7f0a001a;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f060000;

@@ -33,17 +33,19 @@ namespace TaskBuddi.Droid.Screens
 		protected string[] categoryValues;
 		//Controls
 		protected EditText vName;
+		protected Spinner tdAssignedTo;
+		protected Spinner vCategory;
+		protected EditText vKeywords;
 		protected EditText vNotes;
 		protected CheckBox vDone;
-		protected Spinner vCategory;
-		protected Spinner tdAssignedTo;
 
 		protected override void OnCreate(Bundle bundle)
 		{
 			// Init Screen
 			base.OnCreate(bundle);
 			InitViewControls();						
-
+			categoryValues = Resources.GetStringArray(Resource.Array.locCategoryValues);
+			
 			//Load Task Details, if any
 			var taskId = Intent.GetIntExtra("id", 0); //default
 			if (taskId != 0)
@@ -62,8 +64,10 @@ namespace TaskBuddi.Droid.Screens
 			// grab view controls
 			SetContentView(Resource.Layout.TaskDetails);
 			vName = FindViewById<EditText>(Resource.Id.vName);
-			vNotes = FindViewById<EditText>(Resource.Id.tdNotes);
 			vCategory = FindViewById<Spinner>(Resource.Id.catSpinner);
+			vKeywords = FindViewById<EditText>(Resource.Id.vKeywords);
+			vNotes = FindViewById<EditText>(Resource.Id.tdNotes);
+
 			vDone = FindViewById<CheckBox>(Resource.Id.vDone);
 			// Init TaskGroups spinner 
 			groupList = TaskGroupManager.GetTaskGroups().OrderBy(g => g.Name).ToList(); 
@@ -78,9 +82,9 @@ namespace TaskBuddi.Droid.Screens
 			// Load task details
 			vName.Text = task.Name;
 			vNotes.Text = task.Notes;
+			vKeywords.Text = task.Keywords;
 			vDone.Visibility = task.Done ? ViewStates.Visible : ViewStates.Gone;
 			// set spinners
-			categoryValues = Resources.GetStringArray(Resource.Array.locCategoryValues);
 			vCategory.SetSelection(Array.IndexOf(categoryValues, task.Category));
 			var idArray = groupList.Select(g => g.ID).ToArray();
 			tdAssignedTo.SetSelection(Array.IndexOf(idArray, task.GroupId));
@@ -89,9 +93,10 @@ namespace TaskBuddi.Droid.Screens
 		protected void Save()
 		{
 			task.Name = vName.Text;
-			task.Notes = vNotes.Text;
 			task.GroupId = (Int32)tdAssignedTo.SelectedItemId;
 			task.Category = categoryValues[vCategory.SelectedItemPosition];
+			task.Keywords = vKeywords.Text;
+			task.Notes = vNotes.Text;
 			task.Done = vDone.Checked;
 			TaskManager.SaveTask(task);
 		}

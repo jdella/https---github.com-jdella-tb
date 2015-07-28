@@ -33,6 +33,6 @@ C:\Working\TaskBuddi.Droid\TB.Tests\obj\Debug\TaskBuddi.Tests.dll
 C:\Working\TaskBuddi.Droid\TB.Tests\obj\Debug\TaskBuddi.Tests.pdb
 C:\Working\TaskBuddi.Droid\tb\TB.Tests\bin\Debug\TaskBuddi.Tests.dll
 C:\Working\TaskBuddi.Droid\tb\TB.Tests\bin\Debug\TaskBuddi.Tests.pdb
+C:\Working\TaskBuddi.Droid\tb\TB.Tests\obj\Debug\TB.Tests.csprojResolveAssemblyReference.cache
 C:\Working\TaskBuddi.Droid\tb\TB.Tests\obj\Debug\TaskBuddi.Tests.dll
 C:\Working\TaskBuddi.Droid\tb\TB.Tests\obj\Debug\TaskBuddi.Tests.pdb
-C:\Working\TaskBuddi.Droid\tb\TB.Tests\obj\Debug\TB.Tests.csprojResolveAssemblyReference.cache

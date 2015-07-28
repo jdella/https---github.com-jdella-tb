@@ -54,6 +54,22 @@
     <TextView
         android:layout_below="@+id/catSpinner"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Keywords:"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:id="@+id/lblKeywords" />
+    <EditText
+        android:layout_below="@+id/lblKeywords"
+        android:inputType="textMultiLine"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:hint="Enter keywords"
+        android:id="@+id/vKeywords" />
+    <TextView
+        android:layout_below="@+id/vKeywords"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Notes:"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

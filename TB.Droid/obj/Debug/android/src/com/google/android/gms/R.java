@@ -8,6 +8,16 @@
 package com.google.android.gms;
 
 public final class R {
+    public static final class array {
+        /** -display names for above category values
+-TODO - put these in db...
+         */
+        public static int locCategoryDisplay=0x7f070001;
+        /** -SPINNER ARRAYS 
+-filtered list of Google Place types
+         */
+        public static int locCategoryValues=0x7f070000;
+    }
     public static final class attr {
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
@@ -217,36 +227,40 @@ containing a value of this type.
         public static int icon=0x7f020022;
     }
     public static final class id {
-        public static int checkmark=0x7f090014;
-        public static int hybrid=0x7f090000;
-        public static int layoutMain=0x7f090008;
-        public static int lblGroup=0x7f09000a;
-        public static int lblName=0x7f090010;
-        public static int lblNotes=0x7f09000d;
-        public static int menu_add_task=0x7f09001c;
-        public static int menu_add_taskGroup=0x7f09001b;
-        public static int menu_delete=0x7f09001a;
-        public static int menu_save=0x7f090019;
-        public static int menu_show_map=0x7f09001d;
-        public static int none=0x7f090001;
-        public static int normal=0x7f090002;
-        public static int satellite=0x7f090003;
-        public static int tdAssignedTo=0x7f09000b;
-        public static int tdHeader=0x7f090009;
-        public static int tdLayout=0x7f090018;
-        public static int tdNotes=0x7f09000e;
-        public static int terrain=0x7f090004;
-        public static int vCheck=0x7f090017;
-        public static int vDebug=0x7f090006;
-        public static int vDone=0x7f09000f;
-        public static int vFrame=0x7f090005;
-        public static int vGroupId=0x7f090011;
-        public static int vGroupName=0x7f090015;
-        public static int vLayout=0x7f090013;
-        public static int vMain=0x7f090012;
-        public static int vMap=0x7f090007;
-        public static int vName=0x7f09000c;
-        public static int vTaskRow=0x7f090016;
+        public static int catSpinner=0x7f0a000f;
+        public static int checkmark=0x7f0a0018;
+        public static int hybrid=0x7f0a0000;
+        public static int layoutMain=0x7f0a0008;
+        public static int lblCat=0x7f0a000e;
+        public static int lblGroup=0x7f0a000a;
+        public static int lblKeywords=0x7f0a0010;
+        public static int lblName=0x7f0a000c;
+        public static int lblNotes=0x7f0a0012;
+        public static int menu_add_task=0x7f0a0020;
+        public static int menu_add_taskGroup=0x7f0a001f;
+        public static int menu_delete=0x7f0a001e;
+        public static int menu_save=0x7f0a001d;
+        public static int menu_show_map=0x7f0a0021;
+        public static int none=0x7f0a0001;
+        public static int normal=0x7f0a0002;
+        public static int satellite=0x7f0a0003;
+        public static int tdAssignedTo=0x7f0a000b;
+        public static int tdHeader=0x7f0a0009;
+        public static int tdLayout=0x7f0a001c;
+        public static int tdNotes=0x7f0a0013;
+        public static int terrain=0x7f0a0004;
+        public static int vCheck=0x7f0a001b;
+        public static int vDebug=0x7f0a0006;
+        public static int vDone=0x7f0a0014;
+        public static int vFrame=0x7f0a0005;
+        public static int vGroupId=0x7f0a0015;
+        public static int vGroupName=0x7f0a0019;
+        public static int vKeywords=0x7f0a0011;
+        public static int vLayout=0x7f0a0017;
+        public static int vMain=0x7f0a0016;
+        public static int vMap=0x7f0a0007;
+        public static int vName=0x7f0a000d;
+        public static int vTaskRow=0x7f0a001a;
     }
     public static final class integer {
         public static int google_play_services_version=0x7f060000;
@@ -260,13 +274,13 @@ containing a value of this type.
         public static int tasklistitem=0x7f030005;
     }
     public static final class menu {
-        public static int menu_detailsscreen=0x7f080000;
-        public static int menu_homescreen=0x7f080001;
+        public static int menu_detailsscreen=0x7f090000;
+        public static int menu_homescreen=0x7f090001;
     }
     public static final class string {
         public static int ApplicationName=0x7f05001c;
         public static int Hello=0x7f05001b;
-        public static int app_name=0x7f05001e;
+        public static int app_name=0x7f05001d;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
@@ -361,7 +375,6 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static int common_signin_button_text_long=0x7f050013;
-        public static int hello=0x7f05001d;
         /**  Location client code resources (prefix with location_client) 
          */
         public static int location_client_powered_by_google=0x7f05001a;
@@ -369,7 +382,7 @@ containing a value of this type.
     public static final class style {
         /**  Your customizations go here 
          */
-        public static int Theme_TaskBuddi=0x7f070000;
+        public static int Theme_TaskBuddi=0x7f080000;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

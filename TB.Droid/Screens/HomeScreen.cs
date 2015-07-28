@@ -63,11 +63,11 @@ namespace TaskBuddi.Droid.Screens
 		//Activity Life Cycle Transition Methods
 		protected override void OnResume()
 		{
-			base.OnResume();  
-			
+			base.OnResume();  	
+
 			//populate/refresh grid
-			vGroupGrid.Adapter = new TaskGroupListAdapter(this);
-			
+			vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
+
 			//start location listeners
 			_locationManager.RequestLocationUpdates(_locationProvider, 10000, 0, this);	
 
@@ -103,7 +103,7 @@ namespace TaskBuddi.Droid.Screens
 					log = "Unable to determine the address.";
 			}
 			// log result to screen
-			vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log;
+			//vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log;
 		}
 		// Location Listener Events
 		public void OnLocationChanged(Location location)
@@ -116,7 +116,7 @@ namespace TaskBuddi.Droid.Screens
 				GetDeviceLocation();
 			}
 			// log result
-			vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log; 
+			//vDebug.Text = System.DateTime.Now.TimeOfDay + " : " + log; 
 		}
 		//debug output for location
 		protected void LogLocationToScreen(Location location)

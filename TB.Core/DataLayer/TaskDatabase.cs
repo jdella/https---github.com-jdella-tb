@@ -20,8 +20,8 @@ namespace TaskBuddi.DL
 			
 			// create the tables
 			CreateTable<Task>();
-			CreateTable<TaskGroup>();			
-			
+			CreateTable<TaskGroup>();
+
 			//AddDefaultGroup();
 		}
 		//populate DB with default group - useful for debugging

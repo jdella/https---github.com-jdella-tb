@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Paths>
-  <AdditionalAndroidResourcePaths>C:\Working\TaskBuddi.Droid\tb\Components\googleplayservicesjellybean-16.0\lib\android\16\content\google-play-services\libproject\google-play-services_lib;C:\Users\DellaZ\AppData\Local\Xamarin\Android.Support.v4\22.1.1\embedded</AdditionalAndroidResourcePaths>
-  <AdditionalJavaLibraryReferences>C:\Working\TaskBuddi.Droid\tb\Components\googleplayservicesjellybean-16.0\lib\android\16\content\google-play-services\libproject\google-play-services_lib\libs\google-play-services.jar;C:\Users\DellaZ\AppData\Local\Xamarin\Android.Support.v4\22.1.1\embedded\classes.jar;C:\Users\DellaZ\AppData\Local\Xamarin\Android.Support.v4\22.1.1\embedded\libs\internal_impl-22.1.1.jar</AdditionalJavaLibraryReferences>
-  <AdditionalNativeLibraryReferences></AdditionalNativeLibraryReferences>
-</Paths>

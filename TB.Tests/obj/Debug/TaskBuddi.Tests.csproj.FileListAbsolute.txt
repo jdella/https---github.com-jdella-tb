@@ -1,8 +1,0 @@
-C:\TaskBuddi\TB.Tests\bin\Debug\TB.Tests.dll
-C:\TaskBuddi\TB.Tests\bin\Debug\TB.Tests.pdb
-C:\TaskBuddi\TB.Tests\bin\Debug\nunit.framework.dll
-C:\TaskBuddi\TB.Tests\bin\Debug\Xamarin.UITest.dll
-C:\TaskBuddi\TB.Tests\bin\Debug\nunit.framework.xml
-C:\TaskBuddi\TB.Tests\bin\Debug\Xamarin.UITest.xml
-C:\TaskBuddi\TB.Tests\obj\Debug\TB.Tests.dll
-C:\TaskBuddi\TB.Tests\obj\Debug\TB.Tests.pdb

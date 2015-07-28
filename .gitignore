@@ -45,6 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-*/Bin/
-*/Debug/
-*/Release/
+
+#mine
+[Bb]in/
+[Dd]ebug/
+[Rr]elease/
+[Oo]bj
+*.user
+*.userprefs

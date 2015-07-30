@@ -157,9 +157,9 @@ namespace TaskBuddi.Droid.Screens
             switch (item.ItemId)
             {
             // add task
-                case Resource.Id.menu_add_task:
-                    StartActivity(typeof(TaskDetailsScreen));
-                    return true;
+//				case Resource.Id.menu_add_task:
+//					StartActivity(typeof(TaskDetailsScreen));
+//					return true;
             // add group
                 case Resource.Id.menu_add_taskGroup:
                     StartActivity(typeof(TaskGroupDetailsScreen));

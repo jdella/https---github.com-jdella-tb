@@ -122,6 +122,7 @@ namespace TaskBuddi.Droid
             if (_map == null)
             {
                 _map = _mapFragment.Map;
+                _map.SetInfoWindowAdapter(new MapInfoWindowAdapter(LayoutInflater));
                 RecenterMap();
                 UpdateMarker();
             }
@@ -180,11 +181,12 @@ namespace TaskBuddi.Droid
                                     var lpos = new LatLng(Convert.ToDouble(results[l]["geometry"]["location"]["lat"]), 
                                         Convert.ToDouble(results[l]["geometry"]["location"]["lng"]));
                                     locMarker.SetPosition(lpos);
-                                    locMarker.SetTitle(results[l]["name"] + " (" + taskCatCount[i] + ")");
-                                    var snippet = "Category: " + taskCategories[i];
+                                    var task_s = taskCatCount[i] == 1 ? " task" : " tasks";
+                                    locMarker.SetTitle(results[l]["name"] + " (" + taskCatCount[i] + task_s + ")");
+                                    var snippet = ""; //"Category: " + taskCategories[i];
                                     foreach (var task in tasks.Where(x=>x.Category == taskCategories[i]))
                                     {
-                                        snippet += "\n- " + task.Name;
+                                        snippet += "\n" + task.Name;
                                     }
                                     locMarker.SetSnippet(snippet);
                                     //TODO colour enum / set different colours on markers...

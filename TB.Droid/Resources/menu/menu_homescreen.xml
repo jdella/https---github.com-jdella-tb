@@ -3,17 +3,21 @@
 
           <item android:id="@+id/menu_add_taskGroup"
             android:title="G" 
-            android:showAsAction="ifRoom|withText" />
-<!--                android:icon="@drawable/ic_action_addtask" -->
+            android:showAsAction="ifRoom|withText" 
+            android:icon="@drawable/ic_action_addtask" 
+            />                
 
-        <item android:id="@+id/menu_add_task"
+<!--        <item android:id="@+id/menu_add_task"
              android:title="T" 
-             android:showAsAction="ifRoom|withText" />
-<!--                android:icon="@drawable/ic_checkmark" -->
+             android:showAsAction="ifRoom|withText" 
+             android:icon="@drawable/ic_checkmark" 
+             />                -->
 
           <item android:id="@+id/menu_show_map"
             android:title="M" 
-            android:showAsAction="ifRoom|withText" />
-<!--                android:icon="@drawable/ic_launcher" -->
+            android:showAsAction="ifRoom|withText" 
+            android:icon="@drawable/ic_markerthick"
+            />
+                 
 
 </menu>

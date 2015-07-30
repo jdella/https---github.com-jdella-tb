@@ -247,28 +247,46 @@ namespace TaskBuddi.Droid
 			public const int ic_action_save = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int ic_checkmark = 2130837531;
+			public const int ic_bigplus = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int ic_launcher = 2130837532;
+			public const int ic_bigplus2 = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int ic_plusone_medium_off_client = 2130837533;
+			public const int ic_checkmark = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int ic_plusone_small_off_client = 2130837534;
+			public const int ic_launcher = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int ic_plusone_standard_off_client = 2130837535;
+			public const int ic_marker = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int ic_plusone_tall_off_client = 2130837536;
+			public const int ic_marker2 = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int icAddTask = 2130837537;
+			public const int ic_markerthick = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int icon = 2130837538;
+			public const int ic_plusone_medium_off_client = 2130837538;
+			
+			// aapt resource value: 0x7f020023
+			public const int ic_plusone_small_off_client = 2130837539;
+			
+			// aapt resource value: 0x7f020024
+			public const int ic_plusone_standard_off_client = 2130837540;
+			
+			// aapt resource value: 0x7f020025
+			public const int ic_plusone_tall_off_client = 2130837541;
+			
+			// aapt resource value: 0x7f020026
+			public const int icon = 2130837542;
+			
+			// aapt resource value: 0x7f020027
+			public const int tb_icon_bluebox = 2130837543;
+			
+			// aapt resource value: 0x7f020028
+			public const int tb_whitesplit = 2130837544;
 			
 			static Drawable()
 			{
@@ -283,47 +301,44 @@ namespace TaskBuddi.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a000f
-			public const int catSpinner = 2131361807;
+			// aapt resource value: 0x7f0a0011
+			public const int catSpinner = 2131361809;
 			
-			// aapt resource value: 0x7f0a0018
-			public const int checkmark = 2131361816;
+			// aapt resource value: 0x7f0a001a
+			public const int checkmark = 2131361818;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int hybrid = 2131361792;
 			
-			// aapt resource value: 0x7f0a0008
-			public const int layoutMain = 2131361800;
-			
-			// aapt resource value: 0x7f0a000e
-			public const int lblCat = 2131361806;
-			
 			// aapt resource value: 0x7f0a000a
-			public const int lblGroup = 2131361802;
+			public const int layoutMain = 2131361802;
 			
 			// aapt resource value: 0x7f0a0010
-			public const int lblKeywords = 2131361808;
+			public const int lblCat = 2131361808;
 			
 			// aapt resource value: 0x7f0a000c
-			public const int lblName = 2131361804;
+			public const int lblGroup = 2131361804;
 			
 			// aapt resource value: 0x7f0a0012
-			public const int lblNotes = 2131361810;
+			public const int lblKeywords = 2131361810;
 			
-			// aapt resource value: 0x7f0a0020
-			public const int menu_add_task = 2131361824;
+			// aapt resource value: 0x7f0a000e
+			public const int lblName = 2131361806;
 			
-			// aapt resource value: 0x7f0a001f
-			public const int menu_add_taskGroup = 2131361823;
-			
-			// aapt resource value: 0x7f0a001e
-			public const int menu_delete = 2131361822;
-			
-			// aapt resource value: 0x7f0a001d
-			public const int menu_save = 2131361821;
+			// aapt resource value: 0x7f0a0014
+			public const int lblNotes = 2131361812;
 			
 			// aapt resource value: 0x7f0a0021
-			public const int menu_show_map = 2131361825;
+			public const int menu_add_taskGroup = 2131361825;
+			
+			// aapt resource value: 0x7f0a0020
+			public const int menu_delete = 2131361824;
+			
+			// aapt resource value: 0x7f0a001f
+			public const int menu_save = 2131361823;
+			
+			// aapt resource value: 0x7f0a0022
+			public const int menu_show_map = 2131361826;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int none = 2131361793;
@@ -334,56 +349,62 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0003
 			public const int satellite = 2131361795;
 			
+			// aapt resource value: 0x7f0a0008
+			public const int snippet = 2131361800;
+			
+			// aapt resource value: 0x7f0a000d
+			public const int tdAssignedTo = 2131361805;
+			
 			// aapt resource value: 0x7f0a000b
-			public const int tdAssignedTo = 2131361803;
+			public const int tdHeader = 2131361803;
 			
-			// aapt resource value: 0x7f0a0009
-			public const int tdHeader = 2131361801;
+			// aapt resource value: 0x7f0a001e
+			public const int tdLayout = 2131361822;
 			
-			// aapt resource value: 0x7f0a001c
-			public const int tdLayout = 2131361820;
-			
-			// aapt resource value: 0x7f0a0013
-			public const int tdNotes = 2131361811;
+			// aapt resource value: 0x7f0a0015
+			public const int tdNotes = 2131361813;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int terrain = 2131361796;
 			
-			// aapt resource value: 0x7f0a001b
-			public const int vCheck = 2131361819;
+			// aapt resource value: 0x7f0a0007
+			public const int title = 2131361799;
+			
+			// aapt resource value: 0x7f0a001d
+			public const int vCheck = 2131361821;
 			
 			// aapt resource value: 0x7f0a0006
 			public const int vDebug = 2131361798;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int vDone = 2131361812;
+			// aapt resource value: 0x7f0a0016
+			public const int vDone = 2131361814;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int vFrame = 2131361797;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int vGroupId = 2131361813;
+			// aapt resource value: 0x7f0a0017
+			public const int vGroupId = 2131361815;
+			
+			// aapt resource value: 0x7f0a001b
+			public const int vGroupName = 2131361819;
+			
+			// aapt resource value: 0x7f0a0013
+			public const int vKeywords = 2131361811;
 			
 			// aapt resource value: 0x7f0a0019
-			public const int vGroupName = 2131361817;
+			public const int vLayout = 2131361817;
 			
-			// aapt resource value: 0x7f0a0011
-			public const int vKeywords = 2131361809;
+			// aapt resource value: 0x7f0a0018
+			public const int vMain = 2131361816;
 			
-			// aapt resource value: 0x7f0a0017
-			public const int vLayout = 2131361815;
+			// aapt resource value: 0x7f0a0009
+			public const int vMap = 2131361801;
 			
-			// aapt resource value: 0x7f0a0016
-			public const int vMain = 2131361814;
+			// aapt resource value: 0x7f0a000f
+			public const int vName = 2131361807;
 			
-			// aapt resource value: 0x7f0a0007
-			public const int vMap = 2131361799;
-			
-			// aapt resource value: 0x7f0a000d
-			public const int vName = 2131361805;
-			
-			// aapt resource value: 0x7f0a001a
-			public const int vTaskRow = 2131361818;
+			// aapt resource value: 0x7f0a001c
+			public const int vTaskRow = 2131361820;
 			
 			static Id()
 			{
@@ -418,19 +439,22 @@ namespace TaskBuddi.Droid
 			public const int HomeScreen = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int MapLayout = 2130903041;
+			public const int MapInfoWindow = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int TaskDetails = 2130903042;
+			public const int MapLayout = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int TaskGroupDetails = 2130903043;
+			public const int TaskDetails = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int TaskGroupListItem = 2130903044;
+			public const int TaskGroupDetails = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int TaskListItem = 2130903045;
+			public const int TaskGroupListItem = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int TaskListItem = 2130903046;
 			
 			static Layout()
 			{

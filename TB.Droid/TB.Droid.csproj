@@ -120,6 +120,7 @@
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\ILocationService.cs" />
     <Compile Include="Screens\LocationResult.cs" />
+    <Compile Include="Adapters\MapInfoWindowAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -159,9 +160,16 @@
     <AndroidResource Include="Resources\Layout\TaskDetails.axml" />
     <None Include="packages.config" />
     <AndroidResource Include="Resources\Drawable\icon.png" />
-    <AndroidResource Include="Resources\Drawable\icAddTask.png" />
     <AndroidResource Include="Resources\Layout\HomeScreen.axml" />
     <None Include="Adapters\TaskListAdapter.OLD" />
+    <AndroidResource Include="Resources\Layout\MapInfoWindow.axml" />
+    <AndroidResource Include="Resources\drawable\ic_bigplus.png" />
+    <AndroidResource Include="Resources\Drawable\ic_marker.png" />
+    <AndroidResource Include="Resources\Drawable\ic_bigplus2.png" />
+    <AndroidResource Include="Resources\Drawable\ic_marker2.png" />
+    <AndroidResource Include="Resources\Drawable\tb_icon_bluebox.png" />
+    <AndroidResource Include="Resources\Drawable\tb_whitesplit.png" />
+    <AndroidResource Include="Resources\Drawable\ic_markerthick.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />

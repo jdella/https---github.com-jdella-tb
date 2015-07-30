@@ -8,6 +8,7 @@ using Android;
 using Android.Views;
 using Android.Content;
 using TaskBuddi.Droid.Screens;
+using Android.Graphics;
 
 namespace TaskBuddi.Droid.Adapters
 {
@@ -63,6 +64,21 @@ namespace TaskBuddi.Droid.Adapters
 				};
 				vLayout.AddView(taskItem);
 			}
+			//todo refactor candidate...
+			taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
+			taskItem.FindViewById<TextView>(Resource.Id.vName).Text = "add new task";
+			taskItem.FindViewById<TextView>(Resource.Id.vName).SetTextColor(Color.Argb(125, 255, 255, 255));
+			//taskItem.FindViewById<ImageView>(Resource.Id.vCheck).SetImageResource(Resource.Drawable.ic_bigplus2);
+			//taskItem.SetBackgroundColor(Color.White);
+			//#Click Task item -> Task Details
+			taskItem.Click += (sender, e) =>
+			{
+				var showDetails = new Intent(context, typeof(TaskDetailsScreen));
+				//showDetails.PutExtra("id", task.ID);
+				context.StartActivity(showDetails);
+			};
+			vLayout.AddView(taskItem); 
+
 			return view;
 		}
 

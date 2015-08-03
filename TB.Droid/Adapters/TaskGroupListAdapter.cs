@@ -67,14 +67,14 @@ namespace TaskBuddi.Droid.Adapters
 			//todo refactor candidate...
 			taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
 			taskItem.FindViewById<TextView>(Resource.Id.vName).Text = "add new task";
-			taskItem.FindViewById<TextView>(Resource.Id.vName).SetTextColor(Color.Argb(125, 255, 255, 255));
+			taskItem.FindViewById<TextView>(Resource.Id.vName).SetTextColor(new Color(Resource.Color.shadeygrey));
 			//taskItem.FindViewById<ImageView>(Resource.Id.vCheck).SetImageResource(Resource.Drawable.ic_bigplus2);
 			//taskItem.SetBackgroundColor(Color.White);
 			//#Click Task item -> Task Details
 			taskItem.Click += (sender, e) =>
 			{
 				var showDetails = new Intent(context, typeof(TaskDetailsScreen));
-				//showDetails.PutExtra("id", task.ID);
+				showDetails.PutExtra("groupId", group.ID);
 				context.StartActivity(showDetails);
 			};
 			vLayout.AddView(taskItem); 

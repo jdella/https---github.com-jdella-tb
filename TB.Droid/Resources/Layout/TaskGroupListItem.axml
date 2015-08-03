@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/checkmark"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/notebackground"
         android:padding="2dp"
         android:paddingBottom="15dp">
         <TextView

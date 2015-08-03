@@ -146,11 +146,29 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f040005
 			public const int common_signin_btn_light_text_pressed = 2130968581;
 			
-			// aapt resource value: 0x7f04000a
-			public const int common_signin_btn_text_dark = 2130968586;
+			// aapt resource value: 0x7f040010
+			public const int common_signin_btn_text_dark = 2130968592;
+			
+			// aapt resource value: 0x7f040011
+			public const int common_signin_btn_text_light = 2130968593;
+			
+			// aapt resource value: 0x7f04000f
+			public const int notebackground = 2130968591;
 			
 			// aapt resource value: 0x7f04000b
-			public const int common_signin_btn_text_light = 2130968587;
+			public const int shadeygrey = 2130968587;
+			
+			// aapt resource value: 0x7f04000a
+			public const int tb_lightblue = 2130968586;
+			
+			// aapt resource value: 0x7f04000d
+			public const int tb_main = 2130968589;
+			
+			// aapt resource value: 0x7f04000e
+			public const int tb_text = 2130968590;
+			
+			// aapt resource value: 0x7f04000c
+			public const int tb_white = 2130968588;
 			
 			static Color()
 			{
@@ -265,28 +283,31 @@ namespace TaskBuddi.Droid
 			public const int ic_marker2 = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int ic_markerthick = 2130837537;
+			public const int ic_markershaded = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int ic_plusone_medium_off_client = 2130837538;
+			public const int ic_markerthick = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int ic_plusone_small_off_client = 2130837539;
+			public const int ic_plusone_medium_off_client = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int ic_plusone_standard_off_client = 2130837540;
+			public const int ic_plusone_small_off_client = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int ic_plusone_tall_off_client = 2130837541;
+			public const int ic_plusone_standard_off_client = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int icon = 2130837542;
+			public const int ic_plusone_tall_off_client = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int tb_icon_bluebox = 2130837543;
+			public const int icon = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int tb_whitesplit = 2130837544;
+			public const int tb_icon_bluebox = 2130837544;
+			
+			// aapt resource value: 0x7f020029
+			public const int tb_whitesplit = 2130837545;
 			
 			static Drawable()
 			{
@@ -349,8 +370,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0003
 			public const int satellite = 2131361795;
 			
-			// aapt resource value: 0x7f0a0008
-			public const int snippet = 2131361800;
+			// aapt resource value: 0x7f0a0007
+			public const int snippet = 2131361799;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int tdAssignedTo = 2131361805;
@@ -367,14 +388,14 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0004
 			public const int terrain = 2131361796;
 			
-			// aapt resource value: 0x7f0a0007
-			public const int title = 2131361799;
+			// aapt resource value: 0x7f0a0006
+			public const int title = 2131361798;
 			
 			// aapt resource value: 0x7f0a001d
 			public const int vCheck = 2131361821;
 			
-			// aapt resource value: 0x7f0a0006
-			public const int vDebug = 2131361798;
+			// aapt resource value: 0x7f0a0008
+			public const int vDebug = 2131361800;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int vDone = 2131361814;

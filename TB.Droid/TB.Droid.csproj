@@ -170,6 +170,8 @@
     <AndroidResource Include="Resources\Drawable\tb_icon_bluebox.png" />
     <AndroidResource Include="Resources\Drawable\tb_whitesplit.png" />
     <AndroidResource Include="Resources\Drawable\ic_markerthick.png" />
+    <AndroidResource Include="Resources\Drawable\ic_markershaded.png" />
+    <AndroidResource Include="Resources\Values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />

@@ -52,6 +52,15 @@ namespace TaskBuddi.Droid.Screens
             {
                 LoadTask(taskId);
             }
+            else
+            {
+                var groupId = Intent.GetIntExtra("groupId", 0); //default
+                if (groupId != 0)
+                {
+                    var idArray = groupList.Select(g => g.ID).ToArray();
+                    tdAssignedTo.SetSelection(Array.IndexOf(idArray, groupId));
+                }
+            }
         }
 
         private void InitViewControls()
@@ -86,6 +95,7 @@ namespace TaskBuddi.Droid.Screens
             vDone.Visibility = task.Done ? ViewStates.Visible : ViewStates.Gone;
             // set spinners
             vCategory.SetSelection(Array.IndexOf(categoryValues, task.Category));
+			
             var idArray = groupList.Select(g => g.ID).ToArray();
             tdAssignedTo.SetSelection(Array.IndexOf(idArray, task.GroupId));
         }

@@ -33,7 +33,7 @@ namespace TaskBuddi.Droid.Screens
 			SetContentView(Resource.Layout.HomeScreen);
 
 			//get debug field
-			vDebug = FindViewById<TextView>(Resource.Id.vDebug);
+			//vDebug = FindViewById<TextView>(Resource.Id.vDebug);
 
 			//Create custom GridView (fixes sizing/spacing issues)
 			vGroupGrid = new AutoGrid(this);
@@ -51,9 +51,10 @@ namespace TaskBuddi.Droid.Screens
 			Criteria criteria = new Criteria();
 			criteria.Accuracy = Accuracy.Fine;
 
+			//todo choose one method here
 			// Get suitable provider from OS
-			IList<string> acceptableLocationProviders = _locationManager
-                .GetProviders(criteria, true);
+			var best = _locationManager.GetBestProvider(criteria, false);
+			var acceptableLocationProviders = _locationManager.GetProviders(criteria, false);
 			if (acceptableLocationProviders.Any())
 				_locationProvider = acceptableLocationProviders.First();
 			else
@@ -69,10 +70,14 @@ namespace TaskBuddi.Droid.Screens
 			vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
 
 			//start location listeners
-			_locationManager.RequestLocationUpdates(_locationProvider, 10000, 0, this);	
+			if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)
+			{
+				//_locationManager.RequestLocationUpdates(_locationProvider, 10000, 0, this);
+				_locationManager.RequestLocationUpdates(LocationManager.NetworkProvider, 5000, 0, this);
+			}	
 
 			// get address
-			GetDeviceLocation();
+			//GetDeviceLocation();
 		}
             
 		//LOCATION METHODS

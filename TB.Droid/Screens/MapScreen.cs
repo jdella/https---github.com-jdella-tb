@@ -39,6 +39,8 @@ namespace TaskBuddi.Droid
 		protected LocationManager _locationManager;
 		protected string _locationProvider;
 
+		bool markersUpdated = false;
+
 		//** TODO Bind to Background Location Service implmentation**//
 		//protected LocationService _locationService;
 		//protected IServiceConnection serviceConnection = new IServiceConnection();
@@ -49,7 +51,7 @@ namespace TaskBuddi.Droid
 			// Init vieww
 			base.OnCreate(bundle);
 			SetContentView(Resource.Layout.MapLayout);
-			vDebug = FindViewById<TextView>(Resource.Id.vDebug);
+			//vDebug = FindViewById<TextView>(Resource.Id.vDebug);
 
 			InitMapFragment();
 			InitLocationManager();
@@ -60,6 +62,18 @@ namespace TaskBuddi.Droid
 			//StartService(new Intent(this, typeof(LocationService)));
 			//var intent = new Intent(this, typeof(LocationService));
 			//BindService(intent, _locationService, Bind.AutoCreate);
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			//start location listeners
+			if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)
+			{
+				//_locationManager.RequestLocationUpdates(_locationProvider, 6000, 50, this);
+				_locationManager.RequestLocationUpdates(LocationManager.NetworkProvider, 5000, 0, this);
+			}
+			SetupMapIfNeeded();
 		}
 
 		private void InitTaskCategoryArrays()
@@ -73,14 +87,6 @@ namespace TaskBuddi.Droid
 			}
 		}
 
-		protected override void OnResume()
-		{
-			base.OnResume();
-			//start location listeners
-			_locationManager.RequestLocationUpdates(_locationProvider, 6000, 50, this);
-			SetupMapIfNeeded();
-		}
-
 		protected void InitLocationManager()
 		{
 			_locationManager = (LocationManager)GetSystemService(LocationService);
@@ -89,9 +95,11 @@ namespace TaskBuddi.Droid
 			Criteria criteria = new Criteria();
 			criteria.Accuracy = Accuracy.Fine;
 
+			//todo choose one method here
 			// Get suitable provider from OS
+			var best = _locationManager.GetBestProvider(criteria, false);
 			IList<string> acceptableLocationProviders = _locationManager
-                .GetProviders(criteria, true);
+                .GetProviders(criteria, false);
 			if (acceptableLocationProviders.Any())
 				_locationProvider = acceptableLocationProviders.First();
 			else
@@ -127,11 +135,16 @@ namespace TaskBuddi.Droid
 				UpdateMarker();
 			}
 		}
-
+		//#############//
+		// MAP UPDATES //
+		//*************//
 		void UpdateMarker()
 		{
 			if (_map != null && _currentLocation != null)
 			{
+				//todo debugging...
+				markersUpdated = true;
+
 				// outputs device location address to screen for debugging
 				//GetDeviceLocationAddress();
 				_map.Clear();
@@ -245,6 +258,7 @@ namespace TaskBuddi.Droid
 			}
 		}
 
+		//TODO only recentre on init?? and have button to manually center on location...
 		private void RecenterMap()
 		{
 			if (_map != null && _currentLocation != null)
@@ -287,13 +301,15 @@ namespace TaskBuddi.Droid
 		}
 
 		//LOCATION PROVIDER EVENTS
+		//TODO need qualifier here for when to update markers - distance constraint
 		public void OnLocationChanged(Location location)
 		{
 			_currentLocation = location;
 			if (_currentLocation != null)
 			{
 				RecenterMap();
-				UpdateMarker();
+				if (!markersUpdated)
+					UpdateMarker();
 			}
 		}
 

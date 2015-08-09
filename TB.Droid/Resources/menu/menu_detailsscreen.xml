@@ -4,11 +4,13 @@
   <item android:id="@+id/menu_save"
         android:icon="@drawable/ic_action_save" 
         android:title="Save Task" 
-        android:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" 
+        />
 
   <item android:id="@+id/menu_delete"
-        android:icon="@drawable/ic_action_delete" 
+        android:icon="@drawable/ic_trash_shaded2" 
         android:title="Delete Task" 
-        android:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" 
+        />
 
 </menu>

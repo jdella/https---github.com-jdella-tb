@@ -16,8 +16,7 @@
           <item android:id="@+id/menu_show_map"
             android:title="M" 
             android:showAsAction="ifRoom|withText" 
-            android:icon="@drawable/ic_markershaded"
-            />
-                 
+            android:icon="@drawable/ic_2markers"
+            />                
 
 </menu>

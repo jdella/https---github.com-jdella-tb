@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/vTaskRow">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/vName"
+        android:text="Name"
+        android:singleLine="true"
+        android:textColor="@color/tb_main"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp" />
     <ImageView
         android:id="@+id/vCheck"
+        android:src="@drawable/ic_box_ticked"
+        android:layout_alignParentRight="true"
         android:layout_width="15dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_checkmark"
-        android:layout_gravity="center_vertical"
-        android:layout_centerInParent="true"
         android:layout_marginRight="5dp"
-        android:layout_alignParentRight="true" />
-    <LinearLayout
-        android:id="@+id/tdLayout"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/checkmark">
-        <TextView
-            android:id="@+id/vName"
-            android:text="Name"
-            android:textColor="@color/tb_main"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="2dp" />
-    </LinearLayout>
+        android:layout_marginTop="2dp"
+        android:adjustViewBounds="true" />
 </RelativeLayout>

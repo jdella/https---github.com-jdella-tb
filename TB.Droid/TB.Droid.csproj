@@ -172,6 +172,35 @@
     <AndroidResource Include="Resources\Drawable\ic_markerthick.png" />
     <AndroidResource Include="Resources\Drawable\ic_markershaded.png" />
     <AndroidResource Include="Resources\Values\colors.xml" />
+    <AndroidResource Include="Resources\Drawable\ic_trash_shaded.png" />
+    <AndroidResource Include="Resources\Drawable\ic_trash_shaded2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_2markers.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\ic_2markers.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_2markers.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_2markers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_2markers.png" />
+    <AndroidResource Include="Resources\Drawable\rectangle.xml" />
+    <AndroidResource Include="Resources\Layout\TaskListItemORIG.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_box_ticked.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_box_ticked.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_box_ticked.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\ic_box_ticked.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_box_ticked.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\ic_box_plus.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_box_plus.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_box_plus.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_box_plus.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_box_plus.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_plus_thick.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\ic_plus_thick.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_plus_thick.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_plus_thick.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_plus_thick.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_box_unticked.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\ic_box_unticked.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_box_unticked.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_box_unticked.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_box_unticked.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />

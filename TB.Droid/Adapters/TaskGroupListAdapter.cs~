@@ -45,15 +45,24 @@ namespace TaskBuddi.Droid.Adapters
 
             //# List tasks for Group
             View taskItem;
+            TextView taskName;
+            ImageView taskIcon;
             var tasks = TaskManager.GetTasksByGroup(group.ID);
 
             foreach (var task in tasks)
             {
                 // Inflate layout and bind data
                 taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
-                taskItem.FindViewById<TextView>(Resource.Id.vName).Text = task.Name;
-                taskItem.FindViewById<ImageView>(Resource.Id.vCheck).Visibility = task.Done ? 
-                        ViewStates.Visible : ViewStates.Gone;
+                taskName = taskItem.FindViewById<TextView>(Resource.Id.vName);
+                taskIcon = taskItem.FindViewById<ImageView>(Resource.Id.vCheck);
+
+                taskName.Text = task.Name;
+                if (task.Done)
+                    taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+                else
+                    taskIcon.SetImageResource(Resource.Drawable.ic_box_unticked);
+                //taskItem.FindViewById<ImageView>(Resource.Id.vCheck).Visibility = task.Done ? 
+                //ViewStates.Visible : ViewStates.Gone;
 
                 //#Click Task item -> Task Details
                 taskItem.Click += (sender, e) =>
@@ -62,13 +71,20 @@ namespace TaskBuddi.Droid.Adapters
                     showDetails.PutExtra("id", task.ID);
                     context.StartActivity(showDetails);
                 };
+                //#Click Task item -> Task Details
+                taskIcon.Click += (sender, e) =>
+                {
+                    task.Done = true;
+                    TaskManager.SaveTask(task);
+                    taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+                };
                 vLayout.AddView(taskItem);
             }
             //todo refactor candidate...
             taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
             taskItem.FindViewById<TextView>(Resource.Id.vName).Text = "add new task";
             taskItem.FindViewById<TextView>(Resource.Id.vName).SetTextColor(new Color(Resource.Color.shadeygrey));
-            //taskItem.FindViewById<ImageView>(Resource.Id.vCheck).SetImageResource(Resource.Drawable.ic_bigplus2);
+            taskItem.FindViewById<ImageView>(Resource.Id.vCheck).SetImageResource(Resource.Drawable.ic_plus_thick);
             //taskItem.SetBackgroundColor(Color.White);
             //#Click Task item -> Task Details
             taskItem.Click += (sender, e) =>

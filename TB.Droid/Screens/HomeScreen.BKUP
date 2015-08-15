@@ -75,7 +75,6 @@ namespace TaskBuddi.Droid.Screens
 
 			listView1.Adapter = new TaskGroupListAdapter(this); 
 
-
 			//start location listeners
 			if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)
 			{

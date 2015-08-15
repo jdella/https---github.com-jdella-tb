@@ -20,6 +20,7 @@ namespace TaskBuddi.Droid.Screens
         // Groups
         protected GridView vGroupGrid;
         protected TextView vDebug;
+        protected ListView listView1;
 
         protected Location _currentLocation;
         protected LocationManager _locationManager;
@@ -27,7 +28,7 @@ namespace TaskBuddi.Droid.Screens
 
         protected override void OnCreate(Bundle bundle)
         {       
-            // init view
+            // ACTION BAR & MAIN SCREEN LAYOUT
             base.OnCreate(bundle);
             RequestWindowFeature(WindowFeatures.ActionBar);
             SetContentView(Resource.Layout.HomeScreen);
@@ -35,11 +36,14 @@ namespace TaskBuddi.Droid.Screens
             //get debug field
             //vDebug = FindViewById<TextView>(Resource.Id.vDebug);
 
-            //Create custom GridView (fixes sizing/spacing issues)
-            vGroupGrid = new AutoGrid(this);
-            vGroupGrid.SetNumColumns(2);
-            FindViewById<FrameLayout>(Resource.Id.vFrame).AddView(vGroupGrid);  
+            listView1 = FindViewById<ListView>(Resource.Id.listView1);
 
+            //HOME SCREEN ''AUTOGRID'' LAYOUT
+            //Create custom GridView (fixes sizing/spacing issues)
+//			vGroupGrid = new AutoGrid(this);
+//			vGroupGrid.SetNumColumns(2);
+//			FindViewById<FrameLayout>(Resource.Id.vFrame).AddView(vGroupGrid);  
+           
             InitLocationManager();
         }
 
@@ -61,13 +65,16 @@ namespace TaskBuddi.Droid.Screens
                 _locationProvider = string.Empty; //none found
         }
 
-        //Activity Life Cycle Transition Methods
+
         protected override void OnResume()
         {
             base.OnResume();  	
 
             //populate/refresh grid
-            vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
+            //vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
+
+            listView1.Adapter = new TaskGroupListAdapter(this); 
+
 
             //start location listeners
             if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)

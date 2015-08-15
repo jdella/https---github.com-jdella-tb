@@ -22,6 +22,7 @@ namespace TaskBuddi.Droid.Adapters
         public TaskGroupListAdapter(Activity context)
             : base()
         {
+            //GET TASK GROUPS
             this.context = context;
             this.taskGroups = TaskGroupManager.GetTaskGroups();
         }

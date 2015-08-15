@@ -70,11 +70,11 @@ namespace TaskBuddi.Droid.Screens
         {
             base.OnResume();  	
 
+            //TODO decide on view and var names.. Optional layout?
             //populate/refresh grid
             //vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
 
             listView1.Adapter = new TaskGroupListAdapter(this); 
-
 
             //start location listeners
             if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)

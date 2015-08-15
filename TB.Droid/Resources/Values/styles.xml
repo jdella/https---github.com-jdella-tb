@@ -1,5 +1,27 @@
 ﻿<resources>
-	<style name="Theme.TaskBuddi" parent="android:Theme.Holo.Light">
-		<!-- Your customizations go here -->
-	</style>
+<!---COLOURS-->
+    <color name="tb_lightblue">#FF0099FF</color>
+    <color name="shadeygrey">#e22d2d2d</color>
+    <color name="tb_white">#EEE</color>
+    <!--   <color name="notebackground">#e22d2d2d</color>-->
+    <color name="tb_main">#0099FF</color>
+    <color name="tb_text">#FFFFFF</color>
+    <color name="notebackground">#e0e0e0</color>
+    <color name="darker">#33000000</color>
+        <color name="lighter">#33FFFFFF</color>
+
+<!---STYLES-->
+    <style name="Theme.TaskBuddi" parent="android:Theme.Holo.Light">
+    </style>
+    <style name="homeGroupTitle">
+        <item name="android:textSize">30sp</item>
+<!--        <item name="android:textColor">@color/notebackground</item>-->
+    </style>
+    <style name="homeTaskText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="homeBoxSize">
+        <item name="android:layout_width">30dp</item>
+    </style>
 </resources>

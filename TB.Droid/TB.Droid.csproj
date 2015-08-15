@@ -171,7 +171,6 @@
     <AndroidResource Include="Resources\Drawable\tb_whitesplit.png" />
     <AndroidResource Include="Resources\Drawable\ic_markerthick.png" />
     <AndroidResource Include="Resources\Drawable\ic_markershaded.png" />
-    <AndroidResource Include="Resources\Values\colors.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_2markers.png" />
     <AndroidResource Include="Resources\drawable-ldpi\ic_2markers.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_2markers.png" />

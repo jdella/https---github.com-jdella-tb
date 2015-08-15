@@ -17,21 +17,29 @@
     <LinearLayout
         android:id="@+id/vLayout"
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@+id/checkmark"
         android:background="@color/notebackground"
         android:padding="2dp"
         android:paddingBottom="15dp">
-        <TextView
-            android:id="@+id/vGroupName"
-            android:text="Group Name"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="2dp" />
+            android:id="@+id/homeGroupClickableFrame">
+            <TextView
+                android:id="@+id/vGroupName"
+                android:text="Group Name"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                style="@style/homeGroupTitle" />
+        </FrameLayout>
     </LinearLayout>
 </LinearLayout>

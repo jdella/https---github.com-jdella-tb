@@ -26,7 +26,8 @@ namespace TaskBuddi.Droid.Adapters
 			this.context = context;
 			this.taskGroups = TaskGroupManager.GetTaskGroups();
 		}
-		//# Return Views
+		
+		//# INFLATE GROUP LIST VIEW
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			// Inflate layout
@@ -36,22 +37,42 @@ namespace TaskBuddi.Droid.Adapters
 			//#Set Group Name and Clicks
 			var group = taskGroups[position];
 			var vGroupName = view.FindViewById<TextView>(Resource.Id.vGroupName);
+			var groupClickable = view.FindViewById<FrameLayout>(Resource.Id.homeGroupClickableFrame);   
+			
+			var groupId = group.ID;			
 			vGroupName.Text = group.Name;
-			vGroupName.Click += (sender, e) =>
+
+			var groupColor = new Color(Resource.Color.tb_lightblue);
+			groupClickable.SetBackgroundColor(groupColor);
+
+			var inverseColor = new Color(255 - groupColor.R, 255 - groupColor.G, 255 - groupColor.B);
+			vGroupName.SetTextColor(inverseColor);
+			
+			groupClickable.Click += (sender, e) =>
 			{
 				var taskGroupDetails = new Intent(context, typeof(TaskGroupDetailsScreen));
-				taskGroupDetails.PutExtra("groupId", group.ID);
+				taskGroupDetails.PutExtra("groupId", groupId);
 				context.StartActivity(taskGroupDetails);
 			};
+            
+			//# INFLATE TASK LIST ITEMS
+			InflateTaskItems(groupId);
 
-			//# List tasks for Group
-			View taskItem;
-			TextView taskName;
-			ImageView taskIcon;
-			var tasks = TaskManager.GetTasksByGroup(group.ID);
+			//ADD "NEW TASK" LINE
+			AddNewTaskLine(groupId);
 
+			return view;
+		}
+
+		private void InflateTaskItems(int groupId)
+		{
+			var tasks = TaskManager.GetTasksByGroup(groupId);
 			foreach (var task in tasks)
 			{
+				View taskItem;
+				TextView taskName;
+				ImageView taskIcon;
+
 				// Inflate layout and bind data
 				taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
 				taskName = taskItem.FindViewById<TextView>(Resource.Id.vName);
@@ -59,44 +80,59 @@ namespace TaskBuddi.Droid.Adapters
 
 				taskName.Text = task.Name;
 				if (task.Done)
+				{
+					taskName.Paint.Flags = PaintFlags.StrikeThruText;
 					taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+				}
 				else
+				{
 					taskIcon.SetImageResource(Resource.Drawable.ic_box_unticked);
-				//taskItem.FindViewById<ImageView>(Resource.Id.vCheck).Visibility = task.Done ? 
-				//ViewStates.Visible : ViewStates.Gone;
+				}
 
-				//#Click Task item -> Task Details
+				//#Click Task item -> Go to Task Details
 				taskItem.Click += (sender, e) =>
 				{
 					var showDetails = new Intent(context, typeof(TaskDetailsScreen));
 					showDetails.PutExtra("id", task.ID);
 					context.StartActivity(showDetails);
 				};
-				//#Click Task item -> Task Details
+				// CLICK "TASK BOX" ICON TO COMPLETE TASK
 				taskIcon.Click += (sender, e) =>
 				{
-					task.Done = true;
+					task.Done = !task.Done;
 					TaskManager.SaveTask(task);
-					taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+					if (task.Done)
+					{
+						taskName.Paint.Flags = PaintFlags.StrikeThruText;
+						taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+					}
+					else
+					{
+						taskName.Paint.Flags = 0;
+						taskIcon.SetImageResource(Resource.Drawable.ic_box_unticked);
+					}
 				};
 				vLayout.AddView(taskItem);
 			}
-			//todo refactor candidate...
-			taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
-			taskItem.FindViewById<TextView>(Resource.Id.vName).Text = "add new task";
-			taskItem.FindViewById<TextView>(Resource.Id.vName).SetTextColor(new Color(Resource.Color.shadeygrey));
+		}
+
+		void AddNewTaskLine(int groupId)
+		{
+			var taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
+			var newTaskText = taskItem.FindViewById<TextView>(Resource.Id.vName);
+			newTaskText.Text = "add new task";
+			newTaskText.SetTypeface(Typeface.Default, TypefaceStyle.Normal);
+			newTaskText.SetTextColor(new Color(Resource.Color.shadeygrey));
 			taskItem.FindViewById<ImageView>(Resource.Id.vCheck).SetImageResource(Resource.Drawable.ic_plus_thick);
-			//taskItem.SetBackgroundColor(Color.White);
+
 			//#Click Task item -> Task Details
 			taskItem.Click += (sender, e) =>
 			{
 				var showDetails = new Intent(context, typeof(TaskDetailsScreen));
-				showDetails.PutExtra("groupId", group.ID);
+				showDetails.PutExtra("groupId", groupId);
 				context.StartActivity(showDetails);
 			};
 			vLayout.AddView(taskItem); 
-
-			return view;
 		}
 
 		/* ADAPTER OVERRIDE METHODS */

@@ -146,14 +146,17 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f040005
 			public const int common_signin_btn_light_text_pressed = 2130968581;
 			
-			// aapt resource value: 0x7f040011
-			public const int common_signin_btn_text_dark = 2130968593;
-			
 			// aapt resource value: 0x7f040012
-			public const int common_signin_btn_text_light = 2130968594;
+			public const int common_signin_btn_text_dark = 2130968594;
+			
+			// aapt resource value: 0x7f040013
+			public const int common_signin_btn_text_light = 2130968595;
 			
 			// aapt resource value: 0x7f040010
 			public const int darker = 2130968592;
+			
+			// aapt resource value: 0x7f040011
+			public const int lighter = 2130968593;
 			
 			// aapt resource value: 0x7f04000f
 			public const int notebackground = 2130968591;
@@ -349,6 +352,9 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a001a
 			public const int checkmark = 2131361818;
 			
+			// aapt resource value: 0x7f0a001b
+			public const int homeGroupClickableFrame = 2131361819;
+			
 			// aapt resource value: 0x7f0a0000
 			public const int hybrid = 2131361792;
 			
@@ -373,17 +379,17 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0006
 			public const int listView1 = 2131361798;
 			
+			// aapt resource value: 0x7f0a0022
+			public const int menu_add_taskGroup = 2131361826;
+			
 			// aapt resource value: 0x7f0a0021
-			public const int menu_add_taskGroup = 2131361825;
+			public const int menu_delete = 2131361825;
 			
 			// aapt resource value: 0x7f0a0020
-			public const int menu_delete = 2131361824;
+			public const int menu_save = 2131361824;
 			
-			// aapt resource value: 0x7f0a001f
-			public const int menu_save = 2131361823;
-			
-			// aapt resource value: 0x7f0a0022
-			public const int menu_show_map = 2131361826;
+			// aapt resource value: 0x7f0a0023
+			public const int menu_show_map = 2131361827;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int none = 2131361793;
@@ -403,8 +409,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a000b
 			public const int tdHeader = 2131361803;
 			
-			// aapt resource value: 0x7f0a001e
-			public const int tdLayout = 2131361822;
+			// aapt resource value: 0x7f0a001f
+			public const int tdLayout = 2131361823;
 			
 			// aapt resource value: 0x7f0a0015
 			public const int tdNotes = 2131361813;
@@ -415,8 +421,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0007
 			public const int title = 2131361799;
 			
-			// aapt resource value: 0x7f0a001c
-			public const int vCheck = 2131361820;
+			// aapt resource value: 0x7f0a001d
+			public const int vCheck = 2131361821;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int vDone = 2131361814;
@@ -427,8 +433,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0017
 			public const int vGroupId = 2131361815;
 			
-			// aapt resource value: 0x7f0a001b
-			public const int vGroupName = 2131361819;
+			// aapt resource value: 0x7f0a001c
+			public const int vGroupName = 2131361820;
 			
 			// aapt resource value: 0x7f0a0013
 			public const int vKeywords = 2131361811;
@@ -445,8 +451,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a000f
 			public const int vName = 2131361807;
 			
-			// aapt resource value: 0x7f0a001d
-			public const int vTaskRow = 2131361821;
+			// aapt resource value: 0x7f0a001e
+			public const int vTaskRow = 2131361822;
 			
 			static Id()
 			{
@@ -641,6 +647,15 @@ namespace TaskBuddi.Droid
 			
 			// aapt resource value: 0x7f080000
 			public const int Theme_TaskBuddi = 2131230720;
+			
+			// aapt resource value: 0x7f080003
+			public const int homeBoxSize = 2131230723;
+			
+			// aapt resource value: 0x7f080001
+			public const int homeGroupTitle = 2131230721;
+			
+			// aapt resource value: 0x7f080002
+			public const int homeTaskText = 2131230722;
 			
 			static Style()
 			{

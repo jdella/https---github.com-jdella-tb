@@ -11,6 +11,7 @@ using Android.Locations;
 using System.Linq;
 using System.Text;
 using System;
+using TaskBuddi.BL.Managers;
 
 namespace TaskBuddi.Droid.Screens
 {
@@ -74,7 +75,8 @@ namespace TaskBuddi.Droid.Screens
 			//populate/refresh grid
 			//vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
 
-			listView1.Adapter = new TaskGroupListAdapter(this); 
+			var taskGroups = TaskGroupManager.GetTaskGroups();
+			listView1.Adapter = new TaskGroupListAdapter(this, taskGroups); 
 
 			//start location listeners
 			if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)

@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Class="TaskBuddi.Droid.Screens.HomeScreen"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <TextView
-        android:id="@+id/lblName"
-        android:text="Name:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    style="@style/tb_background">
+    <RelativeLayout
+        android:id="@+id/newGroupView"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/vGroupId" />
-    <EditText
-        android:id="@+id/vName"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblName"
-        android:imeOptions="actionNext"
-        android:maxLines="1"
-        android:layout_marginBottom="12dp"
-        android:hint="Name" />
-</RelativeLayout>
+        style="@style/tb_notebackground">
+    <!--         <TextView
+               android:id="@+id/lblName"
+               android:text="Name:"
+               android:textAppearance="?android:attr/textAppearanceMedium"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="12dp"
+               android:layout_below="@+id/vGroupId" /> -->
+        <EditText
+            android:id="@+id/newGroupName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblName"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            style="@style/homeGroupTitle" />
+    </RelativeLayout>
+<!--TASK LIST-->
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/groupDetailTasksList"
+        style="@style/groupDetail" />
+</LinearLayout>

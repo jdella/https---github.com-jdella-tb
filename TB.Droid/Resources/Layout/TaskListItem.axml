@@ -6,8 +6,6 @@
         android:id="@+id/vName"
         android:text="Name"
         android:singleLine="true"
-        android:textColor="@color/tb_main"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,4 +21,11 @@
         android:layout_marginTop="0dp"
         android:adjustViewBounds="true"
         style="@style/homeBoxSize" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vName"
+        android:id="@+id/taskListNotes"
+        android:visibility="gone"
+        style="@style/taskListNotes" />
 </RelativeLayout>

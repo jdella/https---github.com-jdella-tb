@@ -323,6 +323,13 @@ namespace TaskBuddi.Droid
 			
 		}
 
+		/// <param name="provider">the name of the location provider associated with this
+		///  update.</param>
+		/// <summary>
+		/// Raises the status changed event.
+		/// </summary>
+		/// <param name="status">Status.</param>
+		/// <param name="extras">Extras.</param>
 		public void OnStatusChanged(string provider, Availability status, Bundle extras)
 		{
             

@@ -161,7 +161,6 @@
     <None Include="packages.config" />
     <AndroidResource Include="Resources\Drawable\icon.png" />
     <AndroidResource Include="Resources\Layout\HomeScreen.axml" />
-    <None Include="Adapters\TaskListAdapter.OLD" />
     <AndroidResource Include="Resources\Layout\MapInfoWindow.axml" />
     <AndroidResource Include="Resources\drawable\ic_bigplus.png" />
     <AndroidResource Include="Resources\Drawable\ic_marker.png" />

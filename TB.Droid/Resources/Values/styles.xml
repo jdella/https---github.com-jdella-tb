@@ -26,10 +26,15 @@
     <style name="tb_notebackground">
         <item name="android:background">@color/actionbar_grey</item>
     </style>
+    <!---Home Styles-->
     <style name="homeGroupTitle">
         <item name="android:textSize">30sp</item>
-<!--        <item name="android:background">@color/darker_mid</item>-->
+<!--        <item name="android:padding">3dp</item>        -->
         <item name="android:hint">"Enter task group name..."</item>
+    </style>
+    <style name="homeGroupTitle.detail">
+        <item name="android:background">@color/darker_mid</item>
+        <item name="android:padding">6dp</item>
     </style>
     <style name="homeTaskText">
         <item name="android:textSize">20sp</item>

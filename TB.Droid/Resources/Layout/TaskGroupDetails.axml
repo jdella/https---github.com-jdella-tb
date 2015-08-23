@@ -5,29 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style="@style/tb_background">
+    style="@style/tb_notebackground">
     <RelativeLayout
         android:id="@+id/newGroupView"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
+        android:visibility="visible"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         style="@style/tb_notebackground">
-    <!--         <TextView
-               android:id="@+id/lblName"
-               android:text="Name:"
-               android:textAppearance="?android:attr/textAppearanceMedium"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="12dp"
-               android:layout_below="@+id/vGroupId" /> -->
         <EditText
             android:id="@+id/newGroupName"
+            android:visibility="visible"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblName"
             android:imeOptions="actionNext"
             android:maxLines="1"
-            style="@style/homeGroupTitle" />
+            style="@style/homeGroupTitle.detail" />
     </RelativeLayout>
 <!--TASK LIST-->
     <ListView

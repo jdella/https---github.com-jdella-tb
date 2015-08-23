@@ -358,8 +358,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a001c
 			public const int checkmark = 2131361820;
 			
-			// aapt resource value: 0x7f0a0020
-			public const int groupDetailCheckAll = 2131361824;
+			// aapt resource value: 0x7f0a001f
+			public const int groupDetailCheckAll = 2131361823;
 			
 			// aapt resource value: 0x7f0a0019
 			public const int groupDetailTasksList = 2131361817;
@@ -391,17 +391,17 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0006
 			public const int listView1 = 2131361798;
 			
-			// aapt resource value: 0x7f0a0026
-			public const int menu_add_taskGroup = 2131361830;
-			
 			// aapt resource value: 0x7f0a0025
-			public const int menu_delete = 2131361829;
+			public const int menu_add_taskGroup = 2131361829;
 			
 			// aapt resource value: 0x7f0a0024
-			public const int menu_save = 2131361828;
+			public const int menu_delete = 2131361828;
 			
-			// aapt resource value: 0x7f0a0027
-			public const int menu_show_map = 2131361831;
+			// aapt resource value: 0x7f0a0023
+			public const int menu_save = 2131361827;
+			
+			// aapt resource value: 0x7f0a0026
+			public const int menu_show_map = 2131361830;
 			
 			// aapt resource value: 0x7f0a0018
 			public const int newGroupName = 2131361816;
@@ -421,8 +421,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0008
 			public const int snippet = 2131361800;
 			
-			// aapt resource value: 0x7f0a0022
-			public const int taskListNotes = 2131361826;
+			// aapt resource value: 0x7f0a0021
+			public const int taskListNotes = 2131361825;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int tdAssignedTo = 2131361805;
@@ -439,8 +439,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a0007
 			public const int title = 2131361799;
 			
-			// aapt resource value: 0x7f0a0021
-			public const int vCheck = 2131361825;
+			// aapt resource value: 0x7f0a0020
+			public const int vCheck = 2131361824;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int vDone = 2131361814;
@@ -450,9 +450,6 @@ namespace TaskBuddi.Droid
 			
 			// aapt resource value: 0x7f0a001e
 			public const int vGroupName = 2131361822;
-			
-			// aapt resource value: 0x7f0a001f
-			public const int vGroupNameEdit = 2131361823;
 			
 			// aapt resource value: 0x7f0a0013
 			public const int vKeywords = 2131361811;
@@ -469,8 +466,8 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f0a000f
 			public const int vName = 2131361807;
 			
-			// aapt resource value: 0x7f0a0023
-			public const int vTaskRow = 2131361827;
+			// aapt resource value: 0x7f0a0022
+			public const int vTaskRow = 2131361826;
 			
 			static Id()
 			{
@@ -666,29 +663,32 @@ namespace TaskBuddi.Droid
 			// aapt resource value: 0x7f080000
 			public const int Theme_TaskBuddi = 2131230720;
 			
+			// aapt resource value: 0x7f08000a
+			public const int groupDetail = 2131230730;
+			
 			// aapt resource value: 0x7f080009
-			public const int groupDetail = 2131230729;
+			public const int groupTitleBoxSize = 2131230729;
 			
 			// aapt resource value: 0x7f080008
-			public const int groupTitleBoxSize = 2131230728;
-			
-			// aapt resource value: 0x7f080007
-			public const int homeBoxSize = 2131230727;
+			public const int homeBoxSize = 2131230728;
 			
 			// aapt resource value: 0x7f080003
 			public const int homeGroupTitle = 2131230723;
 			
 			// aapt resource value: 0x7f080004
-			public const int homeTaskText = 2131230724;
+			public const int homeGroupTitle_detail = 2131230724;
 			
 			// aapt resource value: 0x7f080005
-			public const int homeTaskText_done = 2131230725;
+			public const int homeTaskText = 2131230725;
 			
 			// aapt resource value: 0x7f080006
-			public const int homeTaskText_new = 2131230726;
+			public const int homeTaskText_done = 2131230726;
 			
-			// aapt resource value: 0x7f08000a
-			public const int taskListNotes = 2131230730;
+			// aapt resource value: 0x7f080007
+			public const int homeTaskText_new = 2131230727;
+			
+			// aapt resource value: 0x7f08000b
+			public const int taskListNotes = 2131230731;
 			
 			// aapt resource value: 0x7f080001
 			public const int tb_background = 2131230721;

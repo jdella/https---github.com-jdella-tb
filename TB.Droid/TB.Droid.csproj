@@ -121,6 +121,7 @@
     <Compile Include="Services\ILocationService.cs" />
     <Compile Include="Screens\LocationResult.cs" />
     <Compile Include="Adapters\MapInfoWindowAdapter.cs" />
+    <Compile Include="Adapters\DetailedTaskAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -1,5 +1,65 @@
 ﻿<resources>
-	<style name="Theme.TaskBuddi" parent="android:Theme.Holo.Light">
-		<!-- Your customizations go here -->
-	</style>
+    <!--- COLOURS SPECIFICATIONS -   define like #[A]RGB    -   desriptive colour strings    -->
+    <color name="tb_lightblue">#FF0099FF</color>
+    <color name="shadeygrey">#e22d2d2d</color>
+    <color name="tb_white">#EEE</color>
+    <color name="actionbar_grey">#e0e0e0</color>
+
+    <!---"SPECIAL" COLOUR DEFINITIONS -->
+    <color name="darker">#33000000</color>
+    <color name="darker_mid">#66000000</color>
+    <color name="darker_more">#99000000</color>
+    <color name="lighter">#66FFFFFF</color>
+    <!--   <color name="notebackground">#e22d2d2d</color>-->
+
+    <!--- COLOUR "VARIABLES" -  actual colours being applied    -  essentially  defines theme being used      -->
+    <color name="tb_mainBg">#0099FF</color>
+    <color name="tb_text">#FFFFFF</color>
+<!--    <color name="notebackground">#e0e0e0</color>-->
+
+    <!---STYLES-->
+    <style name="Theme.TaskBuddi" parent="android:Theme.Holo.Light">
+    </style>
+    <style name="tb_background">
+        <item name="android:background">@color/tb_lightblue</item>
+    </style>
+    <style name="tb_notebackground">
+        <item name="android:background">@color/actionbar_grey</item>
+    </style>
+    <!---Home Styles-->
+    <style name="homeGroupTitle">
+        <item name="android:textSize">30sp</item>
+<!--        <item name="android:padding">3dp</item>        -->
+        <item name="android:hint">"Enter task group name..."</item>
+    </style>
+    <style name="homeGroupTitle.detail">
+        <item name="android:background">@color/darker_mid</item>
+        <item name="android:padding">6dp</item>
+    </style>
+    <style name="homeTaskText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/shadeygrey</item>
+    </style>
+    <style name="homeTaskText.done">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/darker_more</item>
+    </style>
+    <style name="homeTaskText.new">
+<!--        <item name="android:textStyle">normal</item>-->
+        <item name="android:textColor">@color/darker</item>
+    </style>
+    <style name="homeBoxSize">
+        <item name="android:layout_width">30dp</item>
+    </style>
+        <style name="groupTitleBoxSize">
+        <item name="android:layout_width">40dp</item>
+    </style>
+    <style name="groupDetail">
+        <item name="android:layout_margin">12dp</item>
+    </style>
+     <style name="taskListNotes">
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
 </resources>

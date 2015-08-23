@@ -121,11 +121,11 @@
     <Compile Include="Services\ILocationService.cs" />
     <Compile Include="Screens\LocationResult.cs" />
     <Compile Include="Adapters\MapInfoWindowAdapter.cs" />
+    <Compile Include="Adapters\DetailedTaskAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\menu\menu_homescreen.xml" />
     <AndroidResource Include="Resources\menu\menu_detailsscreen.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_action_addtask.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_action_addtask.png" />
@@ -171,13 +171,11 @@
     <AndroidResource Include="Resources\Drawable\tb_whitesplit.png" />
     <AndroidResource Include="Resources\Drawable\ic_markerthick.png" />
     <AndroidResource Include="Resources\Drawable\ic_markershaded.png" />
-    <AndroidResource Include="Resources\Values\colors.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_2markers.png" />
     <AndroidResource Include="Resources\drawable-ldpi\ic_2markers.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_2markers.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_2markers.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_2markers.png" />
-    <AndroidResource Include="Resources\Layout\TaskListItemORIG.axml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_box_ticked.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_box_ticked.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ic_box_ticked.png" />
@@ -201,6 +199,8 @@
     <AndroidResource Include="Resources\Layout\HomeScreenORIG.axml" />
     <AndroidResource Include="Resources\Drawable\ic_trashShaded.png" />
     <None Include="Screens\HomeScreen.BKUP" />
+    <AndroidResource Include="Resources\menu\menu_homescreen.xml" />
+    <AndroidResource Include="Resources\Layout\TaskListItemORIG.djh" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />

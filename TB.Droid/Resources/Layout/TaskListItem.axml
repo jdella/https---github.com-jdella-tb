@@ -6,20 +6,26 @@
         android:id="@+id/vName"
         android:text="Name"
         android:singleLine="true"
-        android:textColor="@color/tb_main"
-        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_alignParentLeft="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="2dp" />
+        android:layout_marginTop="0dp"
+        style="@style/homeTaskText" />
     <ImageView
         android:id="@+id/vCheck"
         android:src="@drawable/ic_box_ticked"
         android:layout_alignParentRight="true"
-        android:layout_width="15dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="2dp"
-        android:adjustViewBounds="true" />
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        style="@style/homeBoxSize" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vName"
+        android:id="@+id/taskListNotes"
+        android:visibility="gone"
+        style="@style/taskListNotes" />
 </RelativeLayout>

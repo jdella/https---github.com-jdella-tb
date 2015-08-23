@@ -9,6 +9,7 @@ using Android.Views;
 using Android.Content;
 using TaskBuddi.Droid.Screens;
 using Android.Graphics;
+using System.Linq;
 
 namespace TaskBuddi.Droid.Adapters
 {
@@ -17,41 +18,136 @@ namespace TaskBuddi.Droid.Adapters
 	{
 		protected Activity context = null;
 		protected IList<TaskGroup> taskGroups = new List<TaskGroup>();
+		protected IList<Task> tasks;
 		protected LinearLayout vLayout;
+		bool isGroupDetail = false;
 
-		public TaskGroupListAdapter(Activity context)
-			: base()
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TaskBuddi.Droid.Adapters.TaskGroupListAdapter"/> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
+		/// <param name="groups">Groups.</param>
+		public TaskGroupListAdapter(Activity context, IList<TaskGroup> groups)
 		{
 			//GET TASK GROUPS
 			this.context = context;
-			this.taskGroups = TaskGroupManager.GetTaskGroups();
+			this.taskGroups = groups;
+			//this.taskGroups = TaskGroupManager.GetTaskGroups();
 		}
-		//# Return Views
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TaskBuddi.Droid.Adapters.TaskGroupListAdapter"/> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
+		/// <param name="group">Group.</param>
+		/// <param name="tasks">Tasks.</param>
+		public TaskGroupListAdapter(Activity context, TaskGroup group, IList<Task> tasks)
+		{
+			//GET TASK GROUPS
+			this.context = context;
+			this.taskGroups.Add(group);
+			this.tasks = tasks;
+			this.isGroupDetail = true;
+		}
+
+		/// <param name="position">The position of the item within the adapter's data set of the item whose view
+		///  we want.</param>
+		/// <summary>
+		/// Gets the view.
+		/// </summary>
+		/// <returns>The view.</returns>
+		/// <param name="convertView">Convert view.</param>
+		/// <param name="parent">Parent.</param>
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			// Inflate layout
 			var view = context.LayoutInflater.Inflate(Resource.Layout.TaskGroupListItem, null);
 			vLayout = view.FindViewById<LinearLayout>(Resource.Id.vLayout);
 
-			//#Set Group Name and Clicks
+			// GET GROUP 
 			var group = taskGroups[position];
+			var groupId = group.ID;
+			// UI ELEMENTS
 			var vGroupName = view.FindViewById<TextView>(Resource.Id.vGroupName);
+			//var vGroupNameEdit = view.FindViewById<EditText>(Resource.Id.vGroupNameEdit);
+			var groupClickable = view.FindViewById<FrameLayout>(Resource.Id.homeGroupClickableFrame);  
+			var checkAll = view.FindViewById<ImageView>(Resource.Id.groupDetailCheckAll);
+			
+			// SET VIEW MODEL			
 			vGroupName.Text = group.Name;
-			vGroupName.Click += (sender, e) =>
-			{
-				var taskGroupDetails = new Intent(context, typeof(TaskGroupDetailsScreen));
-				taskGroupDetails.PutExtra("groupId", group.ID);
-				context.StartActivity(taskGroupDetails);
-			};
+			//vGroupNameEdit.Text = group.Name;
 
-			//# List tasks for Group
-			View taskItem;
-			TextView taskName;
-			ImageView taskIcon;
-			var tasks = TaskManager.GetTasksByGroup(group.ID);
+			if (isGroupDetail)
+				vGroupName.Visibility = ViewStates.Gone;
+			//else
+			//vGroupNameEdit.Visibility = ViewStates.Gone;
+
+			var groupColor = new Color(Resource.Color.tb_lightblue);
+			groupClickable.SetBackgroundColor(groupColor);
+
+			var inverseColor = new Color(255 - groupColor.R, 255 - groupColor.G, 255 - groupColor.B);
+			vGroupName.SetTextColor(inverseColor);
+			
+			if (!isGroupDetail)
+			{
+				groupClickable.Click += (sender, e) =>
+				{
+					var taskGroupDetails = new Intent(context, typeof(TaskGroupDetailsScreen));
+					taskGroupDetails.PutExtra("groupId", groupId);
+					context.StartActivity(taskGroupDetails);
+				};
+			}
+
+			//#GROUP DETAIL SCREEN SPECIFIC LOGIC
+			if (isGroupDetail)
+			{   
+				//vGroupName.Visibility = ViewStates.Gone;
+				//vGroupNameEdit.Visibility = ViewStates.Visible;
+
+				var anyTasksNotDone = tasks.Any(x => x.Done == false);
+
+				if (anyTasksNotDone)
+					checkAll.SetImageResource(Resource.Drawable.ic_box_unticked);
+				checkAll.Visibility = ViewStates.Visible;
+				// if any Tasks incomplete, set all to Done, else set all to not Done
+				checkAll.Click += (sender, e) =>
+				{				
+					foreach (var task in tasks)
+					{
+						task.Done = anyTasksNotDone;
+					}
+					//this.NotifyDataSetChanged();
+				};                
+				//Update Group Name (binding)
+				//TODO: try MVVMCross instead of manual "binding"?
+//				vGroupNameEdit.AfterTextChanged += (sender, e) =>
+//				{
+//					group.Name = vGroupNameEdit.Text;
+//				};
+			}
+
+			//# INFLATE TASK LIST ITEMS
+			InflateTaskItems(groupId);
+
+			//ADD "NEW TASK" LINE
+			AddNewTaskLine(groupId);
+
+			return view;
+		}
+
+		//todo use tasklistadapter??
+		private void InflateTaskItems(int groupId)
+		{
+			if (!isGroupDetail)
+				tasks = TaskManager.GetTasksByGroup(groupId);
 
 			foreach (var task in tasks)
 			{
+				View taskItem;
+				TextView taskName;
+				ImageView taskIcon;
+
 				// Inflate layout and bind data
 				taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
 				taskName = taskItem.FindViewById<TextView>(Resource.Id.vName);
@@ -59,44 +155,68 @@ namespace TaskBuddi.Droid.Adapters
 
 				taskName.Text = task.Name;
 				if (task.Done)
+				{
+					taskName.Paint.Flags = PaintFlags.StrikeThruText;
+					taskName.SetTextAppearance(context, Resource.Style.homeTaskText_done);
 					taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+				}
 				else
+				{
 					taskIcon.SetImageResource(Resource.Drawable.ic_box_unticked);
-				//taskItem.FindViewById<ImageView>(Resource.Id.vCheck).Visibility = task.Done ? 
-				//ViewStates.Visible : ViewStates.Gone;
+				}
+				if (isGroupDetail && task.Notes != "")
+				{
+					var taskNotes = taskItem.FindViewById<TextView>(Resource.Id.taskListNotes);
+					taskNotes.Text = task.Notes;
+					taskNotes.Visibility = ViewStates.Visible;
+				}
 
-				//#Click Task item -> Task Details
+				//#Click Task item -> Go to Task Details
 				taskItem.Click += (sender, e) =>
 				{
 					var showDetails = new Intent(context, typeof(TaskDetailsScreen));
 					showDetails.PutExtra("id", task.ID);
 					context.StartActivity(showDetails);
 				};
-				//#Click Task item -> Task Details
+				// CLICK "TASK BOX" ICON TO COMPLETE TASK
 				taskIcon.Click += (sender, e) =>
 				{
-					task.Done = true;
+					task.Done = !task.Done;
 					TaskManager.SaveTask(task);
-					taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+					if (task.Done)
+					{
+						taskName.Paint.Flags = PaintFlags.StrikeThruText;
+						taskIcon.SetImageResource(Resource.Drawable.ic_box_ticked);
+					}
+					else
+					{
+						taskName.Paint.Flags = 0;
+						taskIcon.SetImageResource(Resource.Drawable.ic_box_unticked);
+					}
 				};
 				vLayout.AddView(taskItem);
 			}
-			//todo refactor candidate...
-			taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
-			taskItem.FindViewById<TextView>(Resource.Id.vName).Text = "add new task";
-			taskItem.FindViewById<TextView>(Resource.Id.vName).SetTextColor(new Color(Resource.Color.shadeygrey));
-			taskItem.FindViewById<ImageView>(Resource.Id.vCheck).SetImageResource(Resource.Drawable.ic_plus_thick);
-			//taskItem.SetBackgroundColor(Color.White);
+		}
+
+		//# "ADD NEW TASK" LINE
+		void AddNewTaskLine(int groupId)
+		{
+			var taskItem = context.LayoutInflater.Inflate(Resource.Layout.TaskListItem, null);
+			var newTaskLine = taskItem.FindViewById<TextView>(Resource.Id.vName);
+			newTaskLine.Text = "add new task";
+			newTaskLine
+                .SetTextAppearance(context, Resource.Style.homeTaskText_new);
+			taskItem.FindViewById<ImageView>(Resource.Id.vCheck)
+                .SetImageResource(Resource.Drawable.ic_plus_thick);
+
 			//#Click Task item -> Task Details
 			taskItem.Click += (sender, e) =>
 			{
 				var showDetails = new Intent(context, typeof(TaskDetailsScreen));
-				showDetails.PutExtra("groupId", group.ID);
+				showDetails.PutExtra("groupId", groupId);
 				context.StartActivity(showDetails);
 			};
 			vLayout.AddView(taskItem); 
-
-			return view;
 		}
 
 		/* ADAPTER OVERRIDE METHODS */

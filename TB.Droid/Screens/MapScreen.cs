@@ -12,6 +12,8 @@ using Newtonsoft.Json.Linq;
 using TaskBuddi.BL.Managers;
 using TaskBuddi.BL;
 using System.Threading;
+using Android.Gms.Common;
+using Android.Gms.Location;
 
 namespace TaskBuddi.Droid
 {
@@ -23,7 +25,8 @@ namespace TaskBuddi.Droid
 	using System.Net.Http;
 
 	[Activity(Label = "Task Map")]
-	public class MapScreen : Activity, ILocationListener
+	public class MapScreen : Activity,  IGooglePlayServicesClientConnectionCallbacks, IGooglePlayServicesClientOnConnectionFailedListener
+    , Android.Gms.Location.ILocationListener
 	{
 		protected GoogleMap _map;
 		protected MapFragment _mapFragment;
@@ -37,9 +40,11 @@ namespace TaskBuddi.Droid
 		
 		protected Location _currentLocation;
 		protected LocationManager _locationManager;
-		protected string _locationProvider;
+		//protected string _locationProvider;
 
 		bool markersUpdated = false;
+
+		LocationClient locClient;
 
 		//** TODO Bind to Background Location Service implmentation**//
 		//protected LocationService _locationService;
@@ -54,7 +59,7 @@ namespace TaskBuddi.Droid
 			//vDebug = FindViewById<TextView>(Resource.Id.vDebug);
 
 			InitMapFragment();
-			InitLocationManager();
+			//InitLocationManager();
 			InitTaskCategoryArrays();
 
 			//** TODO Bind to Background Location Service implmentation**//
@@ -68,12 +73,25 @@ namespace TaskBuddi.Droid
 		{
 			base.OnResume();
 			//start location listeners
-			if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)
-			{
-				//_locationManager.RequestLocationUpdates(_locationProvider, 6000, 50, this);
-				_locationManager.RequestLocationUpdates(LocationManager.NetworkProvider, 5000, 0, this);
-			}
+//			if (!_locationProvider.Equals(string.Empty) && _locationProvider != null)
+//			{
+//				//_locationManager.RequestLocationUpdates(_locationProvider, 6000, 50, this);				
+//				//_locationManager.RequestLocationUpdates(LocationManager.NetworkProvider, 5000, 0, this);
+//			}
+			locClient = new LocationClient(this, this, this);
+			locClient.Connect();
 			SetupMapIfNeeded();
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+
+			if (locClient.IsConnected)
+			{
+				locClient.RemoveLocationUpdates(this);
+				locClient.Disconnect();
+			}
 		}
 
 		private void InitTaskCategoryArrays()
@@ -87,24 +105,24 @@ namespace TaskBuddi.Droid
 			}
 		}
 
-		protected void InitLocationManager()
-		{
-			_locationManager = (LocationManager)GetSystemService(LocationService);
-
-			// set accuracy for location requests
-			Criteria criteria = new Criteria();
-			criteria.Accuracy = Accuracy.Fine;
-
-			//todo choose one method here
-			// Get suitable provider from OS
-			var best = _locationManager.GetBestProvider(criteria, false);
-			IList<string> acceptableLocationProviders = _locationManager
-                .GetProviders(criteria, false);
-			if (acceptableLocationProviders.Any())
-				_locationProvider = acceptableLocationProviders.First();
-			else
-				_locationProvider = string.Empty; //none found
-		}
+		//		protected void InitLocationManager()
+		//		{
+		//			_locationManager = (LocationManager)GetSystemService(LocationService);
+		//
+		//			// set accuracy for location requests
+		//			Criteria criteria = new Criteria();
+		//			criteria.Accuracy = Accuracy.Fine;
+		//
+		//			//todo choose one method here
+		//			// Get suitable provider from OS
+		//			var best = _locationManager.GetBestProvider(criteria, false);
+		//			IList<string> acceptableLocationProviders = _locationManager
+		//                .GetProviders(criteria, false);
+		//			if (acceptableLocationProviders.Any())
+		//				_locationProvider = acceptableLocationProviders.First();
+		//			else
+		//				_locationProvider = string.Empty; //none found
+		//		}
 
 		private void InitMapFragment()
 		{
@@ -130,6 +148,9 @@ namespace TaskBuddi.Droid
 			if (_map == null)
 			{
 				_map = _mapFragment.Map;
+			}
+			if (_map != null)
+			{
 				_map.SetInfoWindowAdapter(new MapInfoWindowAdapter(LayoutInflater));
 				RecenterMap();
 				UpdateMarker();
@@ -313,19 +334,57 @@ namespace TaskBuddi.Droid
 			}
 		}
 
-		public void OnProviderDisabled(string provider)
+		//		public void OnProviderDisabled(string provider)
+		//		{
+		//
+		//		}
+		//
+		//		public void OnProviderEnabled(string provider)
+		//		{
+		//
+		//		}
+
+		/// <param name="provider">the name of the location provider associated with this
+		///  update.</param>
+		/// <summary>
+		/// Raises the status changed event.
+		/// </summary>
+		/// <param name="status">Status.</param>
+		/// <param name="extras">Extras.</param>
+		//		public void OnStatusChanged(string provider, Availability status, Bundle extras)
+		//		{
+		//            
+		//		}
+
+		public void OnConnected(Bundle bundle)
 		{
-			
+			if (locClient.LastLocation != null)
+			{
+				_currentLocation = locClient.LastLocation;
+
+				RecenterMap();
+				if (!markersUpdated)
+					UpdateMarker();
+			}
+
+			LocationRequest locRequest = new LocationRequest();
+
+			locRequest.SetPriority(LocationRequest.PriorityBalancedPowerAccuracy);
+			locRequest.SetFastestInterval(500);
+			locRequest.SetInterval(1000);
+
+			locClient.RequestLocationUpdates(locRequest, this);
+
 		}
 
-		public void OnProviderEnabled(string provider)
+		public void OnDisconnected()
 		{
-			
+			//throw new NotImplementedException();
 		}
 
-		public void OnStatusChanged(string provider, Availability status, Bundle extras)
+		void IGooglePlayServicesClientOnConnectionFailedListener.OnConnectionFailed(ConnectionResult p0)
 		{
-            
+			//throw new NotImplementedException();
 		}
 	}
 }

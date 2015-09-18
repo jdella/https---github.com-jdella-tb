@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<component format="1" id="NUnit.XForms" is-shell="true">
+  <name>NUnit.XForms</name>
+  <publisher>Gabor Nemeth</publisher>
+  <publisher-url>http://gabornemeth.asphostpage.net</publisher-url>
+  <version>0.2.0</version>
+  <summary>NUnit test runner for Xamarin Forms</summary>
+  <packages>
+    <package id="Xamarin.Forms" version="1.4.2" framework="mobile" />
+  </packages>
+  <screenshots>
+    <img src="screenshots/screenshot1.png" title="screenshot1" />
+  </screenshots>
+  <samples>
+    <sample id="Sample.WinPhone">
+      <name>Windows Phone 8.1 (RT) Sample</name>
+      <summary>Windows Phone 8.1 (RT) Sample</summary>
+    </sample>
+    <sample id="Sample.Android">
+      <name>Android Sample</name>
+      <summary>Android Sample</summary>
+    </sample>
+    <sample id="Sample.WinPhone.SL">
+      <name>Windows Phone 8.0 (Silverlight) Sample</name>
+      <summary>Windows Phone 8.0 (Silverlight) Sample</summary>
+    </sample>
+  </samples>
+</component>

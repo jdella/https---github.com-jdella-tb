@@ -18,14 +18,15 @@ namespace TaskBuddi.Droid.Screens
 	[Activity(Label = "TaskBuddi", MainLauncher = true)]			
 	public class HomeScreen : Activity//, ILocationListener
 	{
-		// Groups
 		protected GridView vGroupGrid;
 		protected TextView vDebug;
 		protected ListView listView1;
-
-		protected Location _currentLocation;
-		//protected LocationManager _locationManager;
-		//protected string _locationProvider;
+             
+        //TODO - NEEDED??
+		//protected Location _currentLocation;
+        //protected LocationManager _locationManager;
+        //protected string _locationProvider;  */    
+      
 
 		protected override void OnCreate(Bundle bundle)
 		{       
@@ -34,47 +35,34 @@ namespace TaskBuddi.Droid.Screens
 			RequestWindowFeature(WindowFeatures.ActionBar);
 			SetContentView(Resource.Layout.HomeScreen);
 
-			//get debug field
-			//vDebug = FindViewById<TextView>(Resource.Id.vDebug);
-
+            //Task Group List UI Element
 			listView1 = FindViewById<ListView>(Resource.Id.listView1);
 
-			//HOME SCREEN ''AUTOGRID'' LAYOUT
-			//Create custom GridView (fixes sizing/spacing issues)
-//			vGroupGrid = new AutoGrid(this);
-//			vGroupGrid.SetNumColumns(2);
-//			FindViewById<FrameLayout>(Resource.Id.vFrame).AddView(vGroupGrid);  
-           
-			//InitLocationManager();
+            //      protected void InitLocationManager()
+            //      {
+            //          _locationManager = (LocationManager)GetSystemService(LocationService);
+            //
+            //          // set accuracy for location requests
+            //          Criteria criteria = new Criteria();
+            //          criteria.Accuracy = Accuracy.Fine;
+            //
+            //          //todo choose one method here
+            //          // Get suitable provider from OS
+            //          var best = _locationManager.GetBestProvider(criteria, false);
+            //          var acceptableLocationProviders = _locationManager.GetProviders(criteria, false);
+            //          if (acceptableLocationProviders.Any())
+            //              _locationProvider = acceptableLocationProviders.First();
+            //          else
+            //              _locationProvider = string.Empty; //none found
+            //      }      
+
 		}
-
-		//		protected void InitLocationManager()
-		//		{
-		//			_locationManager = (LocationManager)GetSystemService(LocationService);
-		//
-		//			// set accuracy for location requests
-		//			Criteria criteria = new Criteria();
-		//			criteria.Accuracy = Accuracy.Fine;
-		//
-		//			//todo choose one method here
-		//			// Get suitable provider from OS
-		//			var best = _locationManager.GetBestProvider(criteria, false);
-		//			var acceptableLocationProviders = _locationManager.GetProviders(criteria, false);
-		//			if (acceptableLocationProviders.Any())
-		//				_locationProvider = acceptableLocationProviders.First();
-		//			else
-		//				_locationProvider = string.Empty; //none found
-		//		}
-
 
 		protected override void OnResume()
 		{
 			base.OnResume();  	
 
-			//TODO decide on view and var names.. Optional layout?
-			//populate/refresh grid
-			//vGroupGrid.Adapter = new TaskGroupListAdapter(this);	
-
+            //Get groups and populate UI list
 			var taskGroups = TaskGroupManager.GetTaskGroups();
 			listView1.Adapter = new TaskGroupListAdapter(this, taskGroups); 
 
@@ -163,17 +151,13 @@ namespace TaskBuddi.Droid.Screens
 		public override bool OnCreateOptionsMenu(IMenu menu)
 		{
 			MenuInflater.Inflate(Resource.Menu.menu_homescreen, menu);
-			return true;
+            return true;
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
 			switch (item.ItemId)
 			{
-			// add task
-//				case Resource.Id.menu_add_task:
-//					StartActivity(typeof(TaskDetailsScreen));
-//					return true;
 			// add group
 				case Resource.Id.menu_add_taskGroup:
 					StartActivity(typeof(TaskGroupDetailsScreen));

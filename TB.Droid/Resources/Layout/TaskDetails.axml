@@ -7,10 +7,9 @@
     android:paddingEnd="20dp"
     android:layout_marginBottom="50dp"
     android:id="@+id/layoutMain">
-<!--TextView                 android:id="@+id/tdHeader" android:text="Task Details" android:layout_width="fill_parent" android:layout_height="wrap_content"/-->
     <TextView
         android:layout_below="@+id/tdHeader"
-        android:text="Assign to Group?:"
+        android:text="Assign to Group:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -87,12 +86,4 @@
         android:imeOptions="actionDone"
         android:hint="Notes"
         android:id="@+id/tdNotes" />
-    <CheckBox
-        android:layout_below="@+id/tdNotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Done"
-        android:layout_alignParentRight="true"
-        android:paddingRight="25dp"
-        android:id="@+id/vDone" />
 </RelativeLayout>

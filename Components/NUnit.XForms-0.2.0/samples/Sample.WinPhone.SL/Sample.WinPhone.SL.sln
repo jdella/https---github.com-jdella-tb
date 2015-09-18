@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Sample", "..\Sample\Sample.shproj", "{21B84AAF-3443-4209-8DE3-F426FFC532C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.WinPhone.SL", "Sample.WinPhone.SL\Sample.WinPhone.SL.csproj", "{3F36E715-CADF-489D-86C4-AA5B46CF20CE}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\Sample\Sample.projitems*{21b84aaf-3443-4209-8de3-f426ffc532c8}*SharedItemsImports = 13
+		..\Sample\Sample.projitems*{3f36e715-cadf-489d-86c4-aa5b46cf20ce}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|ARM.Build.0 = Debug|ARM
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|ARM.Deploy.0 = Debug|ARM
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|x86.ActiveCfg = Debug|x86
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|x86.Build.0 = Debug|x86
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Debug|x86.Deploy.0 = Debug|x86
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|ARM.ActiveCfg = Release|ARM
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|ARM.Build.0 = Release|ARM
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|ARM.Deploy.0 = Release|ARM
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|x86.ActiveCfg = Release|x86
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|x86.Build.0 = Release|x86
+		{3F36E715-CADF-489D-86C4-AA5B46CF20CE}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

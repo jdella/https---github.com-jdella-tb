@@ -121,9 +121,8 @@ namespace TaskBuddi.Droid.Screens
 
 		/// <param name="item">The menu item that was selected.</param>
 		/// <summary>
-		/// This hook is called whenever an item in your options menu is selected.
+		/// This hook is called whenever an item in the options menu is tapped.
 		/// </summary>
-		/// <returns>To be added.</returns>
 		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
 			switch (item.ItemId)
@@ -131,14 +130,12 @@ namespace TaskBuddi.Droid.Screens
 				case Resource.Id.menu_save:
 					Save();
 					return true;
-
 				case Resource.Id.menu_delete:
 					Delete();
 					return true;
-
+                //back button
 				default: 
 					Finish();
-					//return base.OnOptionsItemSelected(item);
 					return true;
 			}
 		}

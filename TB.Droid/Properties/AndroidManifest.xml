@@ -1,11 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.dellapz.taskbuddi" android:versionCode="5" android:versionName="2.0">
-	<application android:label="TaskBuddi" android:debuggable="true" android:icon="@drawable/tb_whitesplit" android:theme="@style/Theme.TaskBuddi">
-		<!-- Put your Google Maps V2 API Key here. This key will not work for you.-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+        package="com.dellapz.taskbuddi" 
+        android:versionCode="5" 
+        android:versionName="2.0">
+
+    <application android:label="TaskBuddi" 
+        android:debuggable="true" 
+        android:icon="@drawable/tb_whitesplit" 
+        android:theme="@style/Theme.TaskBuddi">
+
 		<!-- See https://developers.google.com/maps/documentation/android/start#obtaining_an_api_key -->
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAOXRiKMF8oUsIrYVM0MrsKbJwqt9cX1W0" />
-		<meta-data android:name="com.google.android.gms.version" android:value="google_play_services_version" />
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" 
+            android:value="AIzaSyAOXRiKMF8oUsIrYVM0MrsKbJwqt9cX1W0" />
+		<meta-data android:name="com.google.android.gms.version" 
+            android:value="google_play_services_version" />
 	</application>
+
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

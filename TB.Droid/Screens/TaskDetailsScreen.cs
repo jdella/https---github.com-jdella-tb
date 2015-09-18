@@ -37,7 +37,6 @@ namespace TaskBuddi.Droid.Screens
 		protected Spinner vCategory;
 		protected EditText vKeywords;
 		protected EditText vNotes;
-		protected CheckBox vDone;
 
 		protected override void OnCreate(Bundle bundle)
 		{
@@ -76,7 +75,7 @@ namespace TaskBuddi.Droid.Screens
 			vCategory = FindViewById<Spinner>(Resource.Id.catSpinner);
 			vKeywords = FindViewById<EditText>(Resource.Id.vKeywords);
 			vNotes = FindViewById<EditText>(Resource.Id.tdNotes);
-			vDone = FindViewById<CheckBox>(Resource.Id.vDone);
+
 			// Init TaskGroups spinner 
 			groupList = TaskGroupManager.GetTaskGroups().OrderBy(g => g.Name).ToList(); 
 			tdAssignedTo = FindViewById<Spinner>(Resource.Id.tdAssignedTo);
@@ -96,9 +95,6 @@ namespace TaskBuddi.Droid.Screens
 
 			var idArray = groupList.Select(g => g.ID).ToArray();
 			tdAssignedTo.SetSelection(Array.IndexOf(idArray, task.GroupId));
-
-			vDone.Checked = task.Done;
-			//vDone.Visibility = task.Done ? ViewStates.Visible : ViewStates.Gone;
 		}
 
 		protected void Save()
@@ -108,7 +104,6 @@ namespace TaskBuddi.Droid.Screens
 			task.Category = categoryValues[vCategory.SelectedItemPosition];
 			task.Keywords = vKeywords.Text;
 			task.Notes = vNotes.Text;
-			task.Done = vDone.Checked;
 			TaskManager.SaveTask(task);
 		}
 

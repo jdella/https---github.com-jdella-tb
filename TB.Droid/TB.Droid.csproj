@@ -195,10 +195,7 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_box_unticked.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\ic_box_unticked.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_box_unticked.png" />
-    <AndroidResource Include="Resources\Layout\HomeScreenORIG.axml" />
-    <None Include="Screens\HomeScreen.BKUP" />
     <AndroidResource Include="Resources\menu\menu_homescreen.xml" />
-    <AndroidResource Include="Resources\Layout\TaskListItemORIG.djh" />
     <AndroidResource Include="Resources\Drawable\ic_trashShaded.png" />
   </ItemGroup>
   <ItemGroup>

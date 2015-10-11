@@ -39,29 +39,29 @@ namespace TaskBuddi.Droid
 		
 		protected Location _currentLocation;
 		protected LocationManager _locationManager;
-        LocationClient locClient;
+		LocationClient locClient;
 
-        protected override void OnCreate(Bundle bundle)
+		protected override void OnCreate(Bundle bundle)
 		{
 			// Init view
 			base.OnCreate(bundle);
-            //action bar
-            RequestWindowFeature(WindowFeatures.ActionBar);
-            ActionBar.SetDisplayHomeAsUpEnabled(true);
-            ActionBar.SetHomeButtonEnabled(true);
+			//action bar
+			RequestWindowFeature(WindowFeatures.ActionBar);
+			ActionBar.SetDisplayHomeAsUpEnabled(true);
+			ActionBar.SetHomeButtonEnabled(true);
 			//map
-            SetContentView(Resource.Layout.MapLayout);
+			SetContentView(Resource.Layout.MapLayout);
 			InitMapFragment();
 			InitTaskCategoryArrays();
 		}
 
-        // ActionBar tap event
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            //Back button
-            Finish();
-            return true;
-        }
+		// ActionBar tap event
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			//Back button
+			Finish();
+			return true;
+		}
 
 		protected override void OnResume()
 		{
@@ -86,7 +86,8 @@ namespace TaskBuddi.Droid
 		private void InitTaskCategoryArrays()
 		{
 			tasks = TaskManager.GetTasks().ToList();
-			taskCategories = tasks.Select(x => x.Category)
+			taskCategories = tasks.Where(x => x.Done == false)
+                .Select(x => x.Category)
                 .Distinct().ToArray();
 			taskCatCount = new int[taskCategories.Length];
 			for (var i = 0; i < taskCategories.Length; i++)
@@ -94,7 +95,7 @@ namespace TaskBuddi.Droid
 				taskCatCount[i] = tasks.Count(x => x.Category == taskCategories[i]);
 			}
 		}
-            
+
 		private void InitMapFragment()
 		{
 			// get fragment
@@ -127,22 +128,22 @@ namespace TaskBuddi.Droid
 				UpdateMarkers();
 			}
 		}
-		
-        void UpdateMarkers()
-		{
-            //Guard condition
-            if (_map == null || _currentLocation == null)
-                return;
 
-            //...Now update map/markers...
-            _map.Clear();
+		void UpdateMarkers()
+		{
+			//Guard condition
+			if (_map == null || _currentLocation == null)
+				return;
+
+			//...Now update map/markers...
+			_map.Clear();
 
 			// Gets location address string
 			// GetDeviceLocationAddress();
            
-            var currentLocation = new LatLng(_currentLocation.Latitude, _currentLocation.Longitude);
+			var currentLocation = new LatLng(_currentLocation.Latitude, _currentLocation.Longitude);
 			
-            // Set Current location marker
+			// Set Current location marker
 			marker = new MarkerOptions();
 			marker.SetPosition(currentLocation);
 			marker.SetTitle("Current");
@@ -150,58 +151,58 @@ namespace TaskBuddi.Droid
 			_map.AddMarker(marker);
 
 			//TODO - experimental Task Location filter options. Radius/Keywords etc
-            //const int RADIUS = 500;
+			//const int RADIUS = 500;
 
 			// loop thru all active task categories and plot Task Locations
 			for (var i = 0; i < taskCategories.Length; i++)
 			{       
-                //Gooogle Places API request string (using Server API Key set up in Google Developer Console)
+				//Gooogle Places API request string (using Server API Key set up in Google Developer Console)
 				var req = HttpWebRequest.Create(
-                    "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-					"location=" + _currentLocation.Latitude + "," + _currentLocation.Longitude +
+					                      "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
+					                      "location=" + _currentLocation.Latitude + "," + _currentLocation.Longitude +
 					//"&radius=" + RADIUS + 
-					"&rankby=distance" +
-					"&types=" + taskCategories[i] +
+					                      "&rankby=distance" +
+					                      "&types=" + taskCategories[i] +
 					//"&keyword=" + tasks[i].Keywords +
-					"&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
+					                      "&key=AIzaSyAoj2j9AtFF08nWRUdiN577shLpvPIhz-E");
 
-                //set headers
+				//set headers
 				req.ContentType = "application/json";
 				req.Method = "GET";
 
-                //make request and process response
+				//make request and process response
 				using (HttpWebResponse res = req.GetResponse() as HttpWebResponse)
 				{
-                    if (res.StatusCode != HttpStatusCode.OK)
-                    {
-                        Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", res.StatusCode);
-                        return;
-                    }
-                    //Process JSON object with data for Task Locations
+					if (res.StatusCode != HttpStatusCode.OK)
+					{
+						Console.Out.WriteLine("Error fetching data. Server returned status code: {0}", res.StatusCode);
+						return;
+					}
+					//Process JSON object with data for Task Locations
 					using (var reader = new StreamReader(res.GetResponseStream()))
 					{
 						var jdata = JObject.Parse(reader.ReadToEnd());
 						var results = jdata["results"];
-                        for (var loc = 0; loc < 3 && loc < results.Count(); loc++)
+						for (var loc = 0; loc < 3 && loc < results.Count(); loc++)
 						{                                    
 							var locMarker = new MarkerOptions();
-                            var locPos = new LatLng(Convert.ToDouble(results[loc]["geometry"]["location"]["lat"]), 
-								                                      Convert.ToDouble(results[loc]["geometry"]["location"]["lng"]));
+							var locPos = new LatLng(Convert.ToDouble(results[loc]["geometry"]["location"]["lat"]), 
+								                                  Convert.ToDouble(results[loc]["geometry"]["location"]["lng"]));
 							locMarker.SetPosition(locPos);
 
-                            //pluralise "Task" ? (for info window title)
+							//pluralise "Task" ? (for info window title)
 							var task_s = taskCatCount[i] == 1 ? " task" : " tasks";
 							locMarker.SetTitle(results[loc]["name"] + " (" + taskCatCount[i] + task_s + ")");
 							
-                            //set list of matched Location-Category Tasks as info window body
-                            var snippet = "";
+							//set list of matched Location-Category Tasks as info window body
+							var snippet = "";
 							foreach (var task in tasks.Where(x=>x.Category == taskCategories[i]))
 							{
 								snippet += "\n" + task.Name;
 							}
 							locMarker.SetSnippet(snippet);
 
-                            //set marker
+							//set marker
 							locMarker.InvokeIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueYellow));
 							_map.AddMarker(locMarker);
 						}
@@ -209,7 +210,7 @@ namespace TaskBuddi.Droid
 				}
 			}
 		}
-           
+
 		private void RecenterMap()
 		{
 			if (_map != null && _currentLocation != null)
@@ -220,7 +221,7 @@ namespace TaskBuddi.Droid
 			}
 		}
             
-        // Gets address string for current location.  Only used for testing may be useful otherwise...
+		// Gets address string for current location.  Only used for testing may be useful otherwise...
 		async void GetDeviceLocationAddress()
 		{
 			// debug result string
@@ -249,35 +250,35 @@ namespace TaskBuddi.Droid
 			}
 		}
 
-        //LOCATION CLIENT INTERFACE METHODS
+		//LOCATION CLIENT INTERFACE METHODS
 		public void OnLocationChanged(Location location)
 		{
-            if (_currentLocation==null || IsNotSameVicinity(location))
-            {
-                _currentLocation = location;
-                UpdateMarkers();
-            }
+			if (_currentLocation == null || IsNotSameVicinity(location))
+			{
+				_currentLocation = location;
+				UpdateMarkers();
+			}
 		}
 
-        //Rudimentary method of checking if location has changed enouhh to update map markers
-        private bool IsNotSameVicinity(Location newLocation)
-        {
-            var MIN_DISTANCE = 0.1;  //(equates roughly to 100m)
+		//Rudimentary method of checking if location has changed enouhh to update map markers
+		private bool IsNotSameVicinity(Location newLocation)
+		{
+			var MIN_DISTANCE = 0.1;  //(equates roughly to 100m)
 
-            //guard condition, safest to return true
-            if (newLocation == null || _currentLocation == null)
-                return true;
+			//guard condition, safest to return true
+			if (newLocation == null || _currentLocation == null)
+				return true;
 
-            //get absolute differences between lat/long values
-            var latDiff = Math.Abs(newLocation.Latitude - _currentLocation.Latitude);
-            var longDiff = Math.Abs(newLocation.Longitude - _currentLocation.Longitude);
+			//get absolute differences between lat/long values
+			var latDiff = Math.Abs(newLocation.Latitude - _currentLocation.Latitude);
+			var longDiff = Math.Abs(newLocation.Longitude - _currentLocation.Longitude);
 
-            //check if change is big enough to warrant refreshing location markers
-            if (latDiff > MIN_DISTANCE || longDiff > MIN_DISTANCE || (latDiff + longDiff) > MIN_DISTANCE)
-                return true;
-            //else
-            return false;
-        }
+			//check if change is big enough to warrant refreshing location markers
+			if (latDiff > MIN_DISTANCE || longDiff > MIN_DISTANCE || (latDiff + longDiff) > MIN_DISTANCE)
+				return true;
+			//else
+			return false;
+		}
 
 		public void OnConnected(Bundle bundle)
 		{
@@ -302,13 +303,13 @@ namespace TaskBuddi.Droid
 
 		void IGooglePlayServicesClientOnConnectionFailedListener.OnConnectionFailed(ConnectionResult p0)
 		{
-            // Get last known location if possible and use that to at least initiate the screen...
-            if (locClient.LastLocation != null)
-            {
-                _currentLocation = locClient.LastLocation;
-                RecenterMap();
-                UpdateMarkers();
-            }
+			// Get last known location if possible and use that to at least initiate the screen...
+			if (locClient.LastLocation != null)
+			{
+				_currentLocation = locClient.LastLocation;
+				RecenterMap();
+				UpdateMarkers();
+			}
 		}
 	}
 }

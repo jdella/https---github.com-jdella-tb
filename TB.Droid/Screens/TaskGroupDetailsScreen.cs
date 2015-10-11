@@ -44,22 +44,36 @@ namespace TaskBuddi.Droid.Screens
 
 			// Lookup TaskGroup ID passed from intent, if any
 			var groupId = Intent.GetIntExtra("groupId", 0); //default
+
 			if (groupId != 0) //existing
 			{
-				group = TaskGroupManager.GetTaskGroup(groupId);		
-				tasks = TaskManager.GetTasksByGroup(groupId);
-
+				group = TaskGroupManager.GetTaskGroup(groupId);	
 				newGroupName.Text = group.Name;
 
-				var lv = FindViewById<ListView>(Resource.Id.groupDetailTasksList);
-				//lv.Adapter = new TaskGroupListAdapter(this, group, tasks);
-				lv.Adapter = new DetailedTaskAdapter(this, tasks, true);
+				GetGroupTasks();
+               
 			}
 			else //new group
 			{
 				FindViewById<RelativeLayout>(Resource.Id.newGroupView)
                     .Visibility = ViewStates.Visible;
 				
+			}
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();    
+			GetGroupTasks();
+		}
+
+		protected void  GetGroupTasks()
+		{
+			if (group != null)
+			{
+				tasks = TaskManager.GetTasksByGroup(group.ID);
+				var lv = FindViewById<ListView>(Resource.Id.groupDetailTasksList);
+				lv.Adapter = new DetailedTaskAdapter(this, tasks, true);
 			}
 		}
 
@@ -133,7 +147,7 @@ namespace TaskBuddi.Droid.Screens
 				case Resource.Id.menu_delete:
 					Delete();
 					return true;
-                //back button
+			//back button
 				default: 
 					Finish();
 					return true;

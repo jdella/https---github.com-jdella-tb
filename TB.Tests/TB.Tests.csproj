@@ -43,7 +43,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="..\TaskBuddi.Tests\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TB.Droid\TB.Droid.csproj">

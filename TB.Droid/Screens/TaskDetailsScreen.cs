@@ -35,7 +35,7 @@ namespace TaskBuddi.Droid.Screens
 		protected EditText vName;
 		protected Spinner tdAssignedTo;
 		protected Spinner vCategory;
-		protected EditText vKeywords;
+		//protected EditText vKeywords;
 		protected EditText vNotes;
 
 		protected override void OnCreate(Bundle bundle)
@@ -73,7 +73,7 @@ namespace TaskBuddi.Droid.Screens
 			SetContentView(Resource.Layout.TaskDetails);
 			vName = FindViewById<EditText>(Resource.Id.vName);
 			vCategory = FindViewById<Spinner>(Resource.Id.catSpinner);
-			vKeywords = FindViewById<EditText>(Resource.Id.vKeywords);
+			//vKeywords = FindViewById<EditText>(Resource.Id.vKeywords);
 			vNotes = FindViewById<EditText>(Resource.Id.tdNotes);
 
 			// Init TaskGroups spinner 
@@ -90,7 +90,7 @@ namespace TaskBuddi.Droid.Screens
 			// Load task details
 			vName.Text = task.Name;
 			vNotes.Text = task.Notes;
-			vKeywords.Text = task.Keywords;
+			//vKeywords.Text = task.Keywords;
 			vCategory.SetSelection(Array.IndexOf(categoryValues, task.Category));
 
 			var idArray = groupList.Select(g => g.ID).ToArray();
@@ -102,7 +102,7 @@ namespace TaskBuddi.Droid.Screens
 			task.Name = vName.Text;
 			task.GroupId = (Int32)tdAssignedTo.SelectedItemId;
 			task.Category = categoryValues[vCategory.SelectedItemPosition];
-			task.Keywords = vKeywords.Text;
+			//task.Keywords = vKeywords.Text;
 			task.Notes = vNotes.Text;
 			TaskManager.SaveTask(task);
 		}

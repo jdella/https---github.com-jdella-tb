@@ -1,4 +1,4 @@
-﻿using System;
+﻿ureusing System;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
@@ -71,7 +71,7 @@ namespace TaskBuddi.Tests
             app.EnterText(c => c.Marked("vName"), "buy milk");
             app.ScrollDown("Library");
             app.ScrollDownTo(toMarked: "Library", withinMarked: "catSpinner");
-            TimeSpan.Ma
+            //TimeSpan.Ma
             app.EnterText(c => c.Marked("tdNotes"), new string('N', 3));
             app.Tap(c => c.Marked("menu_save"));
             WaitForHome();

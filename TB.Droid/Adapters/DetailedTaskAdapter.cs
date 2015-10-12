@@ -107,6 +107,7 @@ namespace TaskBuddi.Droid.Adapters
 				}
 				else
 				{
+					taskName.Paint.Flags = 0;  //remove strikethrough
 					taskName.SetTextAppearance(context, Resource.Style.homeTaskText);					
 					taskIcon.SetImageResource(Resource.Drawable.ic_box_unticked);
 				}

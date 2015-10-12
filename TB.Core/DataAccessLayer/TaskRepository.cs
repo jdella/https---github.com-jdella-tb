@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using TaskBuddi.BL;
 using System.Linq;
-using System.Collections;
-
-//using Android.Media;
-//using Android.Database.Sqlite;
-//using Android.Database;
-using TaskBuddi.DL.SQLite;
 
 namespace TaskBuddi.DAL
 {
+	/// <summary>
+	/// Repository class for interfacing with the TaskBuddi database
+	/// </summary>
 	public class TaskRepository
 	{
 		DL.TaskDatabase db = null;
 		protected static string dbLocation;
 		protected static TaskRepository me;
-		//TODO lock all access
 		protected object theLock = new object();
 
 		static TaskRepository()
@@ -32,6 +28,10 @@ namespace TaskBuddi.DAL
 			db = new TaskBuddi.DL.TaskDatabase(dbLocation);
 		}
 
+		/// <summary>
+		/// Gets the database file path.
+		/// </summary>
+		/// <value>The database file path.</value>
 		public static string DatabaseFilePath
 		{
 			get
@@ -43,53 +43,90 @@ namespace TaskBuddi.DAL
 			}
 		}
 
+		/// <summary>
+		/// Gets a  task by id.
+		/// </summary>
+		/// <returns>The task.</returns>
+		/// <param name="id">Task ID.</param>
 		public static Task GetTask(int id)
 		{
 			return me.db.GetItem<Task>(id);
 		}
 
+		/// <summary>
+		/// Gets all tasks.
+		/// </summary>
+		/// <returns>All tasks.</returns>
 		public static IEnumerable<Task> GetTasks()
 		{
 			return me.db.GetItems<Task>();
 		}
 
+		/// <summary>
+		/// Gets  asks by group id.
+		/// </summary>
+		/// <returns>All tasks assigned to group</returns>
+		/// <param name="groupId">Task Group ID</param>
 		public static IEnumerable<Task> GetTasksByGroup(int groupId)
 		{
 			var res = me.db.GetItems<Task>().Where(t => t.GroupId == groupId);
 			return res;
 		}
 
-		public static int SaveTask(Task item)
+		/// <summary>
+		/// Saves the task.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="task">Task to save</param>
+		public static int SaveTask(Task task)
 		{
-			return me.db.SaveItem<Task>(item);
+			return me.db.SaveItem<Task>(task);
 		}
 
+		/// <summary>
+		/// Deletes a task.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="id">Task ID</param>
 		public static int DeleteTask(int id)
 		{
 			return me.db.DeleteItem<Task>(id);
 		}
 
-		//TASK GROUPS
+		/// <summary>
+		/// Gets a task group.
+		/// </summary>
+		/// <returns>The task group.</returns>
+		/// <param name="id">Task Group ID</param>
 		public static TaskGroup GetTaskGroup(int id)
 		{
 			return me.db.GetItem<TaskGroup>(id);
 		}
 
+		/// <summary>
+		/// Gets all task groups.
+		/// </summary>
+		/// <returns>All task groups.</returns>
 		public static IEnumerable<TaskGroup> GetTaskGroups()
 		{
 			return me.db.GetItems<TaskGroup>();
 		}
 
-		//		public static IEnumerable<TaskGroup> GetRawTaskGroups()
-		//		{
-		//			return me.db.GetItems<TaskGroup>();
-		//		}
-
+		/// <summary>
+		/// Saves the task group.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="group">Group to save</param>
 		public static int SaveTaskGroup(TaskGroup group)
 		{
 			return me.db.SaveItem<TaskGroup>(group);
 		}
 
+		/// <summary>
+		/// Deletes the task group.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="id">Task Group ID</param>
 		public static int DeleteTaskGroup(int id)
 		{
 			return me.db.DeleteItem<TaskGroup>(id);

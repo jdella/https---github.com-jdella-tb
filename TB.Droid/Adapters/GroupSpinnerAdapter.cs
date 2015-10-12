@@ -12,12 +12,21 @@ using TaskBuddi.Droid.Screens;
 
 namespace TaskBuddi.Droid.Adapters
 {
-	//Adapter to populate spinner in Task Details screen
+
+	/// <summary>
+	//Adapter to populate the Task Group spinner in Task Details screen
+	/// </summary>
 	public class GroupSpinnerAdapter : BaseAdapter<TaskGroup>
 	{
 		protected Activity context = null;
 		protected IList<TaskGroup> taskGroups = new List<TaskGroup>();
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="TaskBuddi.Droid.Adapters.GroupSpinnerAdapter"/> class.
+		/// Populates the Task Group spinner in Task Details screen
+		/// </summary>
+		/// <param name="context">Context.</param>
+		/// <param name="groups">Groups.</param>
 		public GroupSpinnerAdapter(Activity context, IList<TaskGroup> groups)
 			: base()
 		{
@@ -25,38 +34,59 @@ namespace TaskBuddi.Droid.Adapters
 			this.taskGroups = groups;
 		}
 
-		//# Set View Template
+		/// <summary>
+		/// *Adapter implementation method*
+		/// Adapter method to inflate the view for each item in the list provided to the adapter.
+		/// </summary>
+		/// <returns>The inflated view.</returns>
+		/// <param name="position">The position of the item within the adapter's data set</param>
+		/// <param name="convertView">Recyclable view</param>
+		/// <param name="parent">Parent viewgroup</param>
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
 			View view;
 			var group = taskGroups[position];
 
-			//Reuse inflated view if possible
+			//Recycle inflated view if possible
 			if (convertView == null)
 				view = context.LayoutInflater.Inflate(Resource.Layout.TaskGroupListItem, null);
 			else
 				view = convertView;
 
-			//#Set view model
+			//Add Group name to spinner list
 			var vGroupName = view.FindViewById<TextView>(Resource.Id.vGroupName);
 			vGroupName.Text = group.Name;
 
 			return view;
 		}
-            
-		/* COMMON METHODS */
-		//#get group
+
+		/// <summary>
+		/// *Adapter implmenentation method*
+		/// Gets the <see cref="TaskBuddi.BL.TaskGroup"/> with the specified position in the adapter's data set.
+		/// </summary>
+		/// <param name="position">List position</param>
 		public override TaskGroup this [int position]
 		{
 			get { return taskGroups[position]; }
 		}
-		//#get id
+
+		/// <param name="position">The position of the item within the adapter's data set whose row id we want.</param>
+		/// <summary>
+		/// *Adapter implmenentation method*
+		/// Get the row id associated with the specified position in the list.
+		/// </summary>
+		/// <returns>Position</returns>
 		public override long GetItemId(int position)
 		{
 			return taskGroups[position].ID;
 			//return position;
 		}
-		//#get count
+
+		/// <summary>
+		/// *Adapter implmenentation method*
+		/// Returns how many Groups are in the data set represented by this Adapter.
+		/// </summary>
+		/// <value>Item count</value>
 		public override int Count
 		{
 			get { return taskGroups.Count; }

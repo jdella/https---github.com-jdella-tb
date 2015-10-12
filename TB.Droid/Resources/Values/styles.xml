@@ -1,4 +1,6 @@
 ﻿<resources>
+<!---Contains styles used in TaskBuddi -->
+
     <!--- COLOURS SPECIFICATIONS -   define like #[A]RGB    -   desriptive colour strings    -->
     <color name="tb_lightblue">#FF0099FF</color>
     <color name="shadeygrey">#e22d2d2d</color>

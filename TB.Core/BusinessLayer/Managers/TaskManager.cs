@@ -4,32 +4,59 @@ using TaskBuddi.BL;
 
 namespace TaskBuddi.BL.Managers
 {
+	/// <summary>
+	/// Task group manager to handle data requests relating to Tasks items.
+	/// </summary>
 	public static class TaskManager
 	{
 		static TaskManager()
 		{
 		}
 
+		/// <summary>
+		/// Gets a task by ID.
+		/// </summary>
+		/// <returns>The task .</returns>
+		/// <param name="id">Task ID</param>
 		public static Task GetTask(int id)
 		{
 			return DAL.TaskRepository.GetTask(id);
 		}
 
+		/// <summary>
+		/// Gets all tasks.
+		/// </summary>
+		/// <returns>All the tasks</returns>
 		public static IList<Task> GetTasks()
 		{
 			return new List<Task>(DAL.TaskRepository.GetTasks());
 		}
 
+		/// <summary>
+		/// Gets all Tasks for a  Task Group.
+		/// </summary>
+		/// <returns>List of the Group's Tasks.</returns>
+		/// <param name="id">Task Group ID</param>
 		public static IList<Task> GetTasksByGroup(int id)
 		{
 			return new List<Task>(DAL.TaskRepository.GetTasksByGroup(id));
 		}
 
+		/// <summary>
+		/// Saves the task.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="group">Task to save</param>
 		public static int SaveTask(Task item)
 		{
 			return DAL.TaskRepository.SaveTask(item);
 		}
 
+		/// <summary>
+		/// Deletes the task.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="id">Task ID to delete</param>
 		public static int DeleteTask(int id)
 		{
 			return DAL.TaskRepository.DeleteTask(id);

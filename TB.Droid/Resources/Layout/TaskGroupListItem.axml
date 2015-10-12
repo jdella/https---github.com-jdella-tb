@@ -8,10 +8,6 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:padding="2dp">
-<!--
-                      <LinearLayout.BindingContext>
-                       <local:TaskGroup/>
-                     </LinearLayout.BindingContext>-->
     <LinearLayout
         android:id="@+id/vLayout"
         android:orientation="vertical"
@@ -41,17 +37,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="2dp"
                     style="@style/homeGroupTitle" />
-            <!--                                android:text="{Binding Name, Mode=TwoWay}"-->
-            <!--                <EditText
-                    android:id="@+id/vGroupNameEdit"
-                    android:layout_alignParentLeft="true"
-                    android:layout_width="312.5dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="1"
-                    android:hint="Name"
-                    style="@style/homeGroupTitle" />-->
+            <!--for future 'check all' feature-->
                 <ImageView
                     android:id="@+id/groupDetailCheckAll"
                     android:src="@drawable/ic_box_ticked"
@@ -64,5 +50,12 @@
                     style="@style/groupTitleBoxSize" />
             </RelativeLayout>
         </FrameLayout>
+    <!--TODO: POPULATE TASK LIST USING ADAPTER-->
+    <!--    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/homeGroupTaskListView"
+        style="@style/groupDetail" />-->
     </LinearLayout>
 </LinearLayout>

@@ -10,15 +10,12 @@ namespace TaskBuddi.BL
     /// </summary>
     public class TaskGroup : IBusinessEntity
     {
-        public TaskGroup()
-        {
-        }
-
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
         public string Name { get; set; }
-        //TODO implement order/unordered
+
+        //TODO: Implement Group Types (eg. ordered/unorderd)
         public string GroupType { get; set; }
 
         //@Override

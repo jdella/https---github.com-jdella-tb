@@ -7,7 +7,9 @@ using TaskBuddi.BL.Contracts;
 
 namespace TaskBuddi.DL
 {
+	/// <summary>
 	// DB access abstraction layer using generics.
+	/// </summary>
 	public class TaskDatabase : SQLiteConnection
 	{
 		static object locker = new object();
@@ -15,6 +17,7 @@ namespace TaskBuddi.DL
 		public TaskDatabase(string path)
 			: base(path)
 		{
+			//for debugging
 			//DropTable<Task>();
 			//DropTable<TaskGroup>();
 			
@@ -22,18 +25,17 @@ namespace TaskBuddi.DL
 			CreateTable<Task>();
 			CreateTable<TaskGroup>();
 
-			//AddDefaultGroup();
+			//AddDefaultGroup();  //for debuigging
 		}
+
 		//populate DB with default group - useful for debugging
 		private int AddDefaultGroup()
 		{
 			DeleteItem<TaskGroup>(1);
-
 			var tg = new TaskGroup();
 			tg.ID = 1;
 			tg.Name = "Default";
 			SaveItem<TaskGroup>(tg);
-
 			return 1;
 		}
 
@@ -44,31 +46,10 @@ namespace TaskBuddi.DL
 			return Execute(qry);
 		}
 
-		public List<T> GetRawQuery<T>(string qry) where T : IBusinessEntity, new()
-		{
-			lock (locker)
-			{
-				//var map = GetMapping(typeof(T));
-				//var qry = "Select * From " + map.TableName;
-				return Query<T>(qry);
-			}
-		}
-
 		public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()
 		{
 			lock (locker)
 			{
-				return (from i in Table<T>()
-				                    select i).ToList();
-			}
-		}
-
-		public IEnumerable<T> GetRawItems<T>() where T : IBusinessEntity, new()
-		{
-			lock (locker)
-			{
-//                var q = new SQLiteQueryBuilder();
-//                var c = q.Query(me.db, null, null, null, null, null, "Name");
 				return (from i in Table<T>()
 				                    select i).ToList();
 			}

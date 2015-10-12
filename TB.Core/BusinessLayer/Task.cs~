@@ -9,9 +9,6 @@ namespace TaskBuddi.BL
     /// </summary>
     public class Task : IBusinessEntity
     {
-        public Task()
-        {
-        }
 
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

@@ -8,10 +8,16 @@ using System.Linq;
 
 namespace TaskBuddi.Droid
 {
-    // THIS CLASS IS THE BEGINNING OF A BINDABLE BACKGROUND SERVICE TO HANDLE LOCATION
-    // UPDATES.  WILL SEPERATE THIS CONCERN FROM INDIVIDUAL ACTIVITY CLASSES.
-    // MOSTLY COMMENTED OUT TO AVOID BUILD ERRORS/CONFLICTS AS NOT FULLY IMPLEMENTED.
-    
+    /// <summary>
+    /// THIS CLASS WAS THE BEGINNING OF A BINDABLE BACKGROUND SERVICE TO HANDLE LOCATION
+    /// UPDATES TO SEPERATE CONCERNS FROM INDIVIDUAL ACTIVITY CLASSES.
+    /// 
+    /// THIS WAS ABANDONED IN FAVOUR OF USING THE FUSED LOCATION PROVIDER FUNCTIONALITY
+    /// INCLUDED IN GOOGLE PLAY SERVICES.	
+    /// 
+    /// IT HAS MOSTLY BEEN COMMENTED OUT TO AVOID BUILD ERRORS/CONFLICTS BUT REMAINS AS
+    /// A POSSIBLE REFERENCE FOR FUTURE SERVICE BINDING IMPLEMENTATIONS.
+    /// </summary>
     public class LocationService : Service, ILocationListener
     {
         IBinder binder;
@@ -23,7 +29,6 @@ namespace TaskBuddi.Droid
 
         public class ConnectedEventArgs : EventArgs
         {
-            
         }
 
         public class LocationBinder : Binder
@@ -79,9 +84,7 @@ namespace TaskBuddi.Droid
 
         public void onLocationChanged(Location location)
         {
-            this._currentLocation = location;   
-			
-
+            this._currentLocation = location;
         }
 
         public void onProviderDisabled(string provider)

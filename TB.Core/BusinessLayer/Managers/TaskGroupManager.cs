@@ -1,39 +1,52 @@
-using System;
 using System.Collections.Generic;
 using TaskBuddi.BL;
 using TaskBuddi.DAL;
 
-//using Android.Database;
-using TaskBuddi.DL.SQLite;
-
 namespace TaskBuddi.BL.Managers
 {
+	/// <summary>
+	/// Task group manager to handle data requests relating to Task Groups.
+	/// </summary>
 	public static class TaskGroupManager
 	{
 		static TaskGroupManager()
 		{			
 		}
 
+		/// <summary>
+		/// Gets a task group by ID.
+		/// </summary>
+		/// <returns>The task group.</returns>
+		/// <param name="id">Group ID</param>
 		public static TaskGroup GetTaskGroup(int id)
 		{
 			return TaskRepository.GetTaskGroup(id);
 		}
 
+		/// <summary>
+		/// Gets all task groups.
+		/// </summary>
+		/// <returns>The task groups.</returns>
 		public static IList<TaskGroup> GetTaskGroups()
 		{
 			return new List<TaskGroup>(TaskRepository.GetTaskGroups());
 		}
 
-		//        public static IEnumerable<TaskGroup> GetRawTaskGroups()
-		//        {
-		//            return new List<TaskGroup>(TaskRepository.GetRawTaskGroups());
-		//        }
-
+		/// <summary>
+		/// Saves the task group.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="group">Group to save</param>
 		public static int SaveTaskGroup(TaskGroup group)
 		{
 			return TaskRepository.SaveTaskGroup(group);
 		}
 
+		/// <summary>
+		/// Deletes the task group.
+		/// </summary>
+		/// <returns>0 or 1 indicating fail/success</returns>
+		/// <param name="id">Group ID to delete</param>
 		public static int DeleteTaskGroup(int id)
 		{
 			return TaskRepository.DeleteTaskGroup(id);
